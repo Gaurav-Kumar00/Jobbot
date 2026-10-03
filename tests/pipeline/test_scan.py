@@ -450,3 +450,22 @@ async def test_registry_interval_applies(source, repo, notifier):
             state.model_copy(update={"last_run_at": utcnow() - timedelta(hours=3)})
         )
         assert (await run_scan(**common)).sources_due == 1
+
+
+async def test_one_unparseable_posting_does_not_break_the_scan(source, repo, notifier, monkeypatch):
+    import jobbot.pipeline.collect as collect_module
+
+    real = collect_module.normalize_job
+
+    def flaky(job):
+        if job.id.endswith(":bad"):
+            raise ValueError("normaliser bug")
+        return real(job)
+
+    monkeypatch.setattr(collect_module, "normalize_job", flaky)
+    source.boards["acme"] = [posting("bad"), posting("good", title="SDE 1")]
+    source.boards["globex"] = [posting("1")]
+    report = await scan(repo, notifier, slugs=("acme", "globex"))
+    assert report.sources_ok == 2 and report.sources_failed == []
+    assert report.alerts_sent == 2
+    assert repo.get_job("fake:acme:bad") is None

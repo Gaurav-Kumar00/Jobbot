@@ -49,6 +49,8 @@ SOURCE_PRECEDENCE: dict[str, int] = {
     "amazon": 0,
     "microsoft": 0,
     "atlassian": 0,
+    "keka": 0,
+    "unstop": 1,  # employers post directly, but it is not their own careers site
     "adzuna": 2,
     "serpapi": 2,
     "jsearch": 2,

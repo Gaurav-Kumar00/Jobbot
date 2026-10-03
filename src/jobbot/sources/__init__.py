@@ -11,6 +11,7 @@ from jobbot.sources.keka import KekaSource
 from jobbot.sources.lever import LeverSource
 from jobbot.sources.microsoft import MicrosoftSource
 from jobbot.sources.smartrecruiters import SmartRecruitersSource
+from jobbot.sources.unstop import UnstopSource
 from jobbot.sources.workable import WorkableSource
 
 SOURCES: dict[str, Source] = {
@@ -25,6 +26,7 @@ SOURCES: dict[str, Source] = {
         AmazonSource(),
         MicrosoftSource(),
         AtlassianSource(),
+        UnstopSource(),
     )
 }
 

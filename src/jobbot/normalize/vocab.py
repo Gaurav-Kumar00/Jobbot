@@ -55,7 +55,21 @@ class LocationVocab:
 
 
 def _load_yaml(name: str) -> dict[str, Any]:
-    return yaml.safe_load((config_dir() / name).read_text(encoding="utf-8")) or {}
+    data = yaml.safe_load((config_dir() / name).read_text(encoding="utf-8")) or {}
+    _require_string_keys(data, name)
+    return data
+
+
+def _require_string_keys(node: Any, where: str) -> None:
+    """Fail loudly on YAML traps like an unquoted `NO:` (Norway) parsing as False."""
+    if isinstance(node, dict):
+        for key, value in node.items():
+            if not isinstance(key, str):
+                raise ValueError(f"{where}: key {key!r} is not a string; quote it in the YAML")
+            _require_string_keys(value, f"{where}.{key}")
+    elif isinstance(node, list):
+        for value in node:
+            _require_string_keys(value, where)
 
 
 @cache

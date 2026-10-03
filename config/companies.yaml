@@ -53,3 +53,173 @@ companies:
     interval_minutes: 120  # ~15 paged requests per scan; every 2h is plenty
     options: {queries: [software engineer, software developer]}
   - {key: atlassian, name: Atlassian, ats: atlassian, slug: atlassian, interval_minutes: 360}
+
+  # ---------------------------------------------------------------------------------------
+  # Verified 2026-10-03 by a slug/careers-page sweep: every board answered 200 and had at
+  # least one India posting. Comments: india = India postings, eng = engineering among them.
+  # Large boards with almost no engineering roles are scanned every 6h to stay polite.
+  # ---------------------------------------------------------------------------------------
+  - {key: paytmpayments, name: Paytm Payments Services, ats: lever, slug: paytmpayments, interval_minutes: 360}  # india=1054 eng=1
+  - {key: eurofins, name: Eurofins IT Solutions, ats: smartrecruiters, slug: Eurofins, interval_minutes: 360}  # india=338 eng=53
+  - {key: brillio, name: Brillio, ats: lever, slug: brillio-2}  # india=174 eng=112
+  - {key: swiggy, name: Swiggy, ats: smartrecruiters, slug: swiggy, interval_minutes: 360}  # india=166 eng=1
+  - {key: apna, name: apna.co, ats: workable, slug: apna, interval_minutes: 360}  # india=145 eng=6
+  - {key: wabtec, name: Wabtec, ats: smartrecruiters, slug: Wabtec, interval_minutes: 360}  # india=116 eng=57
+  - {key: zscaler, name: Zscaler, ats: greenhouse, slug: zscaler}  # india=82 eng=51
+  - {key: tekion, name: Tekion, ats: ashby, slug: tekion}  # india=79 eng=47
+  - {key: servicenow, name: ServiceNow, ats: smartrecruiters, slug: servicenow}  # india=77 eng=50
+  - {key: gohighlevel, name: HighLevel, ats: lever, slug: gohighlevel}  # india=70 eng=36
+  - {key: linkedin, name: LinkedIn, ats: smartrecruiters, slug: LinkedIn3}  # india=54 eng=25
+  - {key: highradius, name: HighRadius, ats: greenhouse, slug: highradius}  # india=52 eng=20
+  - {key: hevo, name: Hevo Data, ats: lever, slug: hevodata}  # india=51 eng=18
+  - {key: coupang, name: Coupang, ats: greenhouse, slug: coupang}  # india=38 eng=29
+  - {key: inmobi, name: InMobi, ats: greenhouse, slug: inmobi}  # india=36 eng=4
+  - {key: veeva, name: Veeva Systems, ats: lever, slug: veeva}  # india=35 eng=15
+  - {key: payoneer, name: Payoneer, ats: greenhouse, slug: payoneer}  # india=34 eng=14
+  - {key: emergent, name: Emergent, ats: greenhouse, slug: emergentlabsinc}  # india=33 eng=10
+  - {key: celonis, name: Celonis, ats: greenhouse, slug: celonis}  # india=32 eng=28
+  - {key: atlys, name: Atlys, ats: ashby, slug: atlys}  # india=31 eng=6
+  - {key: freshworks, name: Freshworks, ats: smartrecruiters, slug: freshworks}  # india=31 eng=18
+  - {key: sigmoid, name: Sigmoid, ats: greenhouse, slug: sigmoid}  # india=31 eng=7
+  - {key: wise, name: Wise, ats: smartrecruiters, slug: wise}  # india=31 eng=6
+  - {key: tide, name: Tide, ats: greenhouse, slug: tide}  # india=30 eng=9
+  - {key: sprinto, name: Sprinto, ats: lever, slug: Sprinto}  # india=28 eng=3
+  - {key: zenoti, name: Zenoti, ats: greenhouse, slug: zenoti}  # india=28 eng=5
+  - {key: glean, name: Glean, ats: greenhouse, slug: gleanwork}  # india=25 eng=10
+  - {key: roku, name: Roku, ats: greenhouse, slug: roku}  # india=24 eng=24
+  - {key: netskope, name: Netskope, ats: greenhouse, slug: netskope}  # india=23 eng=19
+  - {key: squarepoint, name: Squarepoint Capital, ats: greenhouse, slug: squarepointcapital}  # india=23 eng=8
+  - {key: zeta, name: Zeta, ats: lever, slug: zeta}  # india=23 eng=7
+  - {key: devrev, name: DevRev, ats: greenhouse, slug: devrev}  # india=22 eng=12
+  - {key: drivetrain, name: Drivetrain, ats: lever, slug: drivetrain}  # india=22 eng=11
+  - {key: glance, name: Glance, ats: greenhouse, slug: glance}  # india=22 eng=7
+  - {key: lingaro, name: Lingaro, ats: lever, slug: lingarogroup}  # india=22 eng=14
+  - {key: arista, name: Arista Networks, ats: smartrecruiters, slug: aristanetworks}  # india=21 eng=19
+  - {key: g2, name: G2, ats: ashby, slug: g2}  # india=21 eng=6
+  - {key: harness, name: Harness, ats: greenhouse, slug: harnessinc}  # india=19 eng=16
+  - {key: fampay, name: FamPay, ats: lever, slug: fampay}  # india=17 eng=5
+  - {key: fivetran, name: Fivetran, ats: greenhouse, slug: fivetran}  # india=17 eng=11
+  - {key: redwood, name: Redwood Software, ats: greenhouse, slug: redwoodsoftware}  # india=17 eng=8
+  - {key: stablemoney, name: Stable Money, ats: lever, slug: stable-money1}  # india=17 eng=0
+  - {key: bureau, name: Bureau, ats: ashby, slug: bureau}  # india=16 eng=5
+  - {key: commvault, name: Commvault, ats: greenhouse, slug: commvault}  # india=16 eng=10
+  - {key: mindtickle, name: Mindtickle, ats: lever, slug: mindtickle}  # india=16 eng=7
+  - {key: signoz, name: SigNoz, ats: ashby, slug: signoz}  # india=16 eng=10
+  - {key: ema, name: Ema, ats: ashby, slug: ema}  # india=15 eng=10
+  - {key: acceldata, name: Acceldata, ats: lever, slug: acceldata}  # india=14 eng=11
+  - {key: chargepoint, name: ChargePoint, ats: greenhouse, slug: chargepoint}  # india=14 eng=8
+  - {key: cloudsek, name: CloudSEK, ats: greenhouse, slug: cloudsek}  # india=14 eng=4
+  - {key: elastic, name: Elastic, ats: greenhouse, slug: elastic}  # india=14 eng=7
+  - {key: graviton, name: Graviton Research Capital, ats: greenhouse, slug: gravitonresearchcapital}  # india=14 eng=7
+  - {key: elevenlabs, name: ElevenLabs, ats: ashby, slug: elevenlabs}  # india=13 eng=1
+  - {key: ion, name: ION Group, ats: lever, slug: ion}  # india=13 eng=9
+  - {key: snowflake, name: Snowflake, ats: ashby, slug: snowflake}  # india=13 eng=10
+  - {key: truefoundry, name: TrueFoundry, ats: greenhouse, slug: truefoundry}  # india=13 eng=7
+  - {key: warnermusic, name: Warner Music Group, ats: lever, slug: wmg}  # india=13 eng=12
+  - {key: grab, name: Grab, ats: smartrecruiters, slug: grab}  # india=12 eng=6
+  - {key: kong, name: Kong, ats: ashby, slug: kong}  # india=12 eng=4
+  - {key: nium, name: Nium, ats: lever, slug: nium}  # india=12 eng=3
+  - {key: nksecurities, name: NK Securities Research, ats: greenhouse, slug: nksecuritiesresearch}  # india=12 eng=6
+  - {key: partech, name: PAR Technology, ats: ashby, slug: PAR Technology}  # india=12 eng=10
+  - {key: endorlabs, name: Endor Labs, ats: greenhouse, slug: endorlabs}  # india=11 eng=9
+  - {key: levelai, name: Level AI, ats: ashby, slug: level-ai}  # india=11 eng=10
+  - {key: netomi, name: Netomi, ats: lever, slug: netomi}  # india=11 eng=6
+  - {key: sentinelone, name: SentinelOne, ats: greenhouse, slug: sentinellabs}  # india=11 eng=7
+  - {key: spotdraft, name: SpotDraft, ats: ashby, slug: spotdraft}  # india=11 eng=1
+  - {key: towerresearch, name: Tower Research Capital, ats: greenhouse, slug: towerresearchcapital}  # india=11 eng=7
+  - {key: truecaller, name: Truecaller, ats: greenhouse, slug: truecaller}  # india=11 eng=5
+  - {key: certifyos, name: CertifyOS, ats: ashby, slug: certifyos}  # india=10 eng=4
+  - {key: ixigo, name: ixigo, ats: smartrecruiters, slug: ixigo}  # india=10 eng=5
+  - {key: onedirect, name: Onedirect, ats: smartrecruiters, slug: Onedirect1}  # india=10 eng=4
+  - {key: openai, name: OpenAI, ats: ashby, slug: openai}  # india=10 eng=4
+  - {key: plane, name: Plane, ats: ashby, slug: plane}  # india=10 eng=7
+  - {key: agoda, name: Agoda, ats: greenhouse, slug: agoda}  # india=9 eng=6
+  - {key: clickhouse, name: ClickHouse, ats: ashby, slug: clickhouse}  # india=9 eng=6
+  - {key: gushwork, name: Gushwork, ats: lever, slug: gushwork}  # india=9 eng=3
+  - {key: newrelic, name: New Relic, ats: greenhouse, slug: newrelic}  # india=9 eng=6
+  - {key: airwallex, name: Airwallex, ats: ashby, slug: airwallex}  # india=8 eng=1
+  - {key: datadog, name: Datadog, ats: greenhouse, slug: datadog}  # india=8 eng=1
+  - {key: shyftlabs, name: ShyftLabs, ats: lever, slug: shyftlabs}  # india=8 eng=5
+  - {key: worldquant, name: WorldQuant, ats: greenhouse, slug: worldquant}  # india=8 eng=2
+  - {key: bolna, name: Bolna AI, ats: ashby, slug: bolna}  # india=7 eng=1
+  - {key: cardboard, name: Cardboard, ats: ashby, slug: cardboard}  # india=7 eng=5
+  - {key: cerebras, name: Cerebras, ats: ashby, slug: cerebras}  # india=7 eng=6
+  - {key: togetherai, name: Together AI, ats: greenhouse, slug: togetherai}  # india=7 eng=7
+  - {key: uipath, name: UiPath, ats: ashby, slug: uipath}  # india=7 eng=7
+  - {key: zimperium, name: Zimperium, ats: lever, slug: zimperium}  # india=7 eng=6
+  - {key: airbnb, name: Airbnb, ats: greenhouse, slug: airbnb}  # india=6 eng=3
+  - {key: apollo, name: Apollo.io, ats: greenhouse, slug: apolloio}  # india=6 eng=3
+  - {key: motive, name: Motive, ats: greenhouse, slug: gomotive}  # india=6 eng=2
+  - {key: wayground, name: Wayground (Quizizz), ats: lever, slug: Wayground}  # india=6 eng=0
+  - {key: termgrid, name: Termgrid, ats: lever, slug: termgrid}  # india=6 eng=2
+  - {key: yugabyte, name: Yugabyte, ats: greenhouse, slug: yugabyte}  # india=6 eng=4
+  - {key: aiprise, name: AiPrise, ats: ashby, slug: aiprise}  # india=5 eng=4
+  - {key: anthropic, name: Anthropic, ats: greenhouse, slug: anthropic}  # india=5 eng=3
+  - {key: canva, name: Canva, ats: smartrecruiters, slug: canva}  # india=5 eng=0
+  - {key: collinearai, name: Collinear AI, ats: ashby, slug: collinear-ai}  # india=5 eng=1
+  - {key: conga, name: Conga, ats: greenhouse, slug: conga}  # india=5 eng=4
+  - {key: junipersquare, name: Juniper Square, ats: ashby, slug: junipersquare}  # india=5 eng=3
+  - {key: rockstar, name: Rockstar Games, ats: greenhouse, slug: rockstargames}  # india=5 eng=2
+  - {key: shipsy, name: Shipsy, ats: smartrecruiters, slug: shipsy}  # india=5 eng=4
+  - {key: starburst, name: Starburst, ats: greenhouse, slug: starburst}  # india=5 eng=4
+  - {key: sumologic, name: Sumo Logic, ats: greenhouse, slug: sumologic}  # india=5 eng=3
+  - {key: zuora, name: Zuora, ats: greenhouse, slug: zuora}  # india=5 eng=5
+  - {key: aspora, name: Aspora, ats: ashby, slug: aspora}  # india=4 eng=2
+  - {key: ciroos, name: Ciroos, ats: ashby, slug: ciroos}  # india=4 eng=4
+  - {key: commure, name: Commure, ats: ashby, slug: Commure}  # india=4 eng=1
+  - {key: coupa, name: Coupa, ats: lever, slug: coupa}  # india=4 eng=3
+  - {key: coursera, name: Coursera, ats: greenhouse, slug: coursera}  # india=4 eng=2
+  - {key: gainsight, name: Gainsight, ats: ashby, slug: gainsight}  # india=4 eng=2
+  - {key: jfrog, name: JFrog, ats: greenhouse, slug: jfrog}  # india=4 eng=0
+  - {key: leenaai, name: Leena AI, ats: workable, slug: leena-ai}  # india=4 eng=0
+  - {key: notion, name: Notion, ats: ashby, slug: notion}  # india=4 eng=3
+  - {key: observeai, name: Observe.AI, ats: greenhouse, slug: observeai}  # india=4 eng=3
+  - {key: turing, name: Turing, ats: greenhouse, slug: turing}  # india=4 eng=3
+  - {key: altimate, name: Altimate AI, ats: ashby, slug: altimate}  # india=3 eng=2
+  - {key: binance, name: Binance, ats: lever, slug: binance}  # india=3 eng=0
+  - {key: cartesia, name: Cartesia, ats: ashby, slug: cartesia}  # india=3 eng=1
+  - {key: emergence, name: Emergence, ats: ashby, slug: emergence}  # india=3 eng=1
+  - {key: instead, name: Instead, ats: greenhouse, slug: instead}  # india=3 eng=1
+  - {key: miq, name: MiQ, ats: greenhouse, slug: miqdigital}  # india=3 eng=2
+  - {key: redis, name: Redis, ats: ashby, slug: redis}  # india=3 eng=0
+  - {key: reodev, name: Reo.Dev, ats: ashby, slug: reo-dev}  # india=3 eng=0
+  - {key: temporal, name: Temporal, ats: ashby, slug: temporal}  # india=3 eng=1
+  - {key: thoughtworks, name: Thoughtworks, ats: greenhouse, slug: thoughtworks}  # india=3 eng=3
+  - {key: unacademy, name: Unacademy, ats: smartrecruiters, slug: unacademy}  # india=3 eng=1
+  - {key: coderabbit, name: CodeRabbit, ats: ashby, slug: coderabbit}  # india=2 eng=0
+  - {key: fi, name: Fi Money, ats: lever, slug: epifi}  # india=2 eng=0
+  - {key: figma, name: Figma, ats: greenhouse, slug: figma}  # india=2 eng=0
+  - {key: grafana, name: Grafana Labs, ats: greenhouse, slug: grafanalabs}  # india=2 eng=1
+  - {key: granica, name: Granica, ats: ashby, slug: granica}  # india=2 eng=2
+  - {key: pocketfm, name: Pocket FM, ats: lever, slug: pocketfm}  # india=2 eng=0
+  - {key: quantiq, name: Quantiq, ats: greenhouse, slug: quantiq}  # india=2 eng=1
+  - {key: smallest, name: Smallest.ai, ats: ashby, slug: smallest}  # india=2 eng=2
+  - {key: supa, name: Supa Health, ats: ashby, slug: supa}  # india=2 eng=2
+  - {key: tala, name: Tala, ats: lever, slug: tala}  # india=2 eng=0
+  - {key: vercel, name: Vercel, ats: greenhouse, slug: vercel}  # india=2 eng=0
+  - {key: zaimler, name: zaimler, ats: lever, slug: zaimler}  # india=2 eng=2
+  - {key: cars24, name: Cars24, ats: smartrecruiters, slug: cars24}  # india=1 eng=0
+  - {key: cloudflare, name: Cloudflare, ats: greenhouse, slug: cloudflare}  # india=1 eng=1
+  - {key: cockroachlabs, name: Cockroach Labs, ats: greenhouse, slug: cockroachlabs}  # india=1 eng=0
+  - {key: confluent, name: Confluent, ats: ashby, slug: confluent}  # india=1 eng=1
+  - {key: contentstack, name: Contentstack, ats: greenhouse, slug: contentstack}  # india=1 eng=0
+  - {key: furtherai, name: FurtherAI, ats: ashby, slug: furtherai}  # india=1 eng=1
+  - {key: lendingkart, name: Lendingkart, ats: smartrecruiters, slug: lendingkart}  # india=1 eng=1
+  - {key: loophealth, name: Loop Health, ats: smartrecruiters, slug: loophealth}  # india=1 eng=0
+  - {key: mesh, name: Mesh, ats: greenhouse, slug: mesh}  # india=1 eng=1
+  - {key: nirmata, name: Nirmata, ats: greenhouse, slug: nirmata}  # india=1 eng=1
+  - {key: ownwell, name: Ownwell, ats: greenhouse, slug: ownwell}  # india=1 eng=1
+  - {key: scaleai, name: Scale AI, ats: greenhouse, slug: scaleai}  # india=1 eng=0
+  - {key: scaler, name: Scaler (InterviewBit), ats: smartrecruiters, slug: interviewbit}  # india=1 eng=1
+  - {key: seekho, name: Seekho, ats: workable, slug: seekho}  # india=1 eng=1
+  - {key: turtlemint, name: Turtlemint, ats: smartrecruiters, slug: turtlemint}  # india=1 eng=0
+  - {key: upstox, name: Upstox, ats: smartrecruiters, slug: upstox}  # india=1 eng=0
+  - {key: whatfix, name: Whatfix, ats: smartrecruiters, slug: whatfix}  # india=1 eng=0
+
+  # --- Unstop: India job board where employers post directly; robots.txt allows /api/public/* ---
+  - key: unstop
+    name: Unstop
+    ats: unstop
+    slug: unstop
+    interval_minutes: 120
+    options: {queries: [python, backend developer, django, software engineer], max_pages: 2}

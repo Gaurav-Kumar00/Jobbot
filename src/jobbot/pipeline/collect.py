@@ -30,6 +30,19 @@ class TargetOutcome:
         return self.error is None
 
 
+def _normalize_all(jobs: list[Job], target: CompanyTarget) -> tuple[list[Job], int]:
+    """Normalise each job; one unparseable posting is skipped, never fatal."""
+    out: list[Job] = []
+    broken = 0
+    for job in jobs:
+        try:
+            out.append(normalize_job(job))
+        except Exception:
+            broken += 1
+            log.exception("normaliser failed", extra={"job": job.id})
+    return out, broken
+
+
 async def collect(
     targets: list[CompanyTarget],
     http: HttpClient,
@@ -44,19 +57,17 @@ async def collect(
         async with gate:
             try:
                 result = await get_source(target.ats).fetch(target, http)
+                if any(job.source != target.ats for job in result.jobs):
+                    # Closing stale postings relies on job.source == target.ats.
+                    outcome = TargetOutcome(target, error="adapter bug: job.source != ats name")
+                else:
+                    jobs, broken = _normalize_all(result.jobs, target)
+                    outcome = TargetOutcome(target, jobs=jobs, skipped=result.skipped + broken)
             except FetchError as exc:
                 outcome = TargetOutcome(target, error=str(exc))
             except Exception as exc:  # a bug in one adapter must not kill the run
                 log.exception("source crashed", extra={"source": f"{target.ats}:{target.key}"})
                 outcome = TargetOutcome(target, error=f"crashed: {type(exc).__name__}: {exc}")
-            else:
-                if any(job.source != target.ats for job in result.jobs):
-                    # Closing stale postings relies on job.source == target.ats.
-                    outcome = TargetOutcome(target, error="adapter bug: job.source != ats name")
-                else:
-                    outcome = TargetOutcome(
-                        target, jobs=[normalize_job(j) for j in result.jobs], skipped=result.skipped
-                    )
         outcome.seconds = round(time.monotonic() - started, 2)
         log.info(
             "fetched",

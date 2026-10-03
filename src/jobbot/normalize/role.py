@@ -23,7 +23,10 @@ _CATEGORY_RULES: list[tuple[str, re.Pattern[str]]] = [
         r"|(?:technical )?support engineer|technical support|(?:technical|professional) services"
         r"|services engineer|customer engineer|implementation engineer|solutions engineer"
         r"|sales engineer|field engineer|developer advocate|developer relations|devrel"
-        r"|developer evangelist)\b"
+        r"|developer evangelist|service desk|help ?desk|it engineer|it support|desktop support"
+        r"|value engineer|solutions? engineer|gtm engineer|go-to-market"
+        r"|(?<!cloud )operations engineer|sustenance engineer|application support"
+        r"|production support)\b"
     )),
     ("management", re.compile(
         r"\b(engineering manager|manager,? engineering|em|director|head of|vp|vice president"
@@ -38,7 +41,7 @@ _CATEGORY_RULES: list[tuple[str, re.Pattern[str]]] = [
     )),
     ("qa", re.compile(
         r"\b(qa|sdet|quality assurance|quality engineer|test(?:ing)? engineer|tester"
-        r"|test automation"
+        r"|test automation|engineer testing|automation (?:&|and) quality|quality focus"
         r"|automation (?:test|qa)\w*|engineer in test)\b"
     )),
     ("security", re.compile(
@@ -161,12 +164,14 @@ def classify_seniority(title: str) -> str:
 
 
 def classify_employment(title: str, description: str = "", hint: str | None = None) -> str:
-    if hint and (mapped := _HINT_EMPLOYMENT.get(hint.strip().lower())):
-        return mapped
+    # An explicit title ("SDE-1 (FTC)", "Backend Intern") beats a generic structured field
+    # (Amazon marks fixed-term contracts as "full-time").
     cleaned = clean_title(title)
     for kind, pattern in _EMPLOYMENT_RULES:
         if pattern.search(cleaned):
             return kind
+    if hint and (mapped := _HINT_EMPLOYMENT.get(hint.strip().lower())):
+        return mapped
     if _DESC_INTERN.search(description.lower()):
         return "intern"
     return "full_time"

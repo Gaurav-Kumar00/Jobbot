@@ -12,6 +12,7 @@ from jobbot.normalize import normalize_job
 from jobbot.sources import get_source
 
 DISCOVERABLE = ("greenhouse", "lever", "ashby", "workable", "keka", "smartrecruiters")
+CASE_SENSITIVE = {"lever", "smartrecruiters"}
 ENGINEERING = {"backend", "software_generic", "fullstack", "ai_engineering", "data_engineering"}
 _SUFFIXES = re.compile(
     r"\b(technologies|technology|tech|labs|software|solutions|private|pvt|limited|ltd|inc|india"
@@ -41,8 +42,8 @@ async def discover(name: str, http: HttpClient, extra_slugs: tuple[str, ...] = (
     candidates = list(dict.fromkeys([*extra_slugs, *slug_candidates(name)]))
     probes = list(
         dict.fromkeys(
-            # only SmartRecruiters ids are case-sensitive
-            (ats, slug if ats == "smartrecruiters" else slug.lower())
+            # Lever slugs and SmartRecruiters ids are case-sensitive; the rest are not
+            (ats, slug if ats in CASE_SENSITIVE else slug.lower())
             for ats in DISCOVERABLE
             for slug in candidates
         )

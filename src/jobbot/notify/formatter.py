@@ -21,6 +21,9 @@ SOURCE_LABELS = {
     "amazon": "Amazon Jobs",
     "microsoft": "Microsoft Careers",
     "atlassian": "Atlassian Careers",
+    "workable": "Workable",
+    "keka": "Keka",
+    "unstop": "Unstop",
     "adzuna": "Adzuna",
     "hn": "HN Who's Hiring",
 }

@@ -77,6 +77,20 @@ from jobbot.normalize.role import classify_employment, classify_role, classify_s
         ("Software Engineer 3 - Enterprise Architecture", "software_generic", "senior"),
         ("Intermediate Backend Engineer, India", "backend", "mid"),
         ("Developer Relations Engineer - Developer Advocate", "non_software", "unknown"),
+        # false positives from the 180-company live ranking
+        ("Service Desk Engineer", "non_software", "unknown"),
+        ("Value Engineer-Scale-NAM", "non_software", "unknown"),
+        ("Solution Engineer : Delhi", "non_software", "unknown"),
+        ("Agentic Solution Engineer", "non_software", "unknown"),
+        ("AI GTM Engineer", "non_software", "unknown"),
+        ("Trade Operations Engineer", "non_software", "unknown"),
+        ("IT Engineer", "non_software", "unknown"),
+        ("Product Sustenance Engineer", "non_software", "unknown"),
+        ("SDE (Automation & Quality Focus)", "qa", "unknown"),
+        ("Software Development Engineer Testing", "qa", "unknown"),
+        # and true positives that must stay
+        ("Software Engineer, Backend (Python)", "backend", "unknown"),
+        ("Associate Software Development Engineer (SDE)", "software_generic", "junior"),
         ("", "unknown", "unknown"),
     ],
 )
@@ -105,7 +119,9 @@ def test_role_and_seniority(title, category, seniority):
         ("Backend Engineer", "", "Internship", "intern"),
         ("Backend Engineer", "", "Full-time", "full_time"),
         ("Backend Engineer", "", "Contract", "contract"),
-        ("Intern", "", "Full-time", "full_time"),  # structured hint wins
+        ("Backend Engineer", "", "Full-time", "full_time"),  # structured hint used
+        ("SDE-1 (FTC)", "", "full-time", "contract"),  # explicit title beats generic hint
+        ("Backend Intern", "", "Full-time", "intern"),
     ],
 )
 def test_employment_type(title, description, hint, expected):

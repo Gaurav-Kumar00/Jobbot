@@ -1,0 +1,1052 @@
+{
+ "data": {
+  "current_page": 1,
+  "data": [
+   {
+    "id": 1760751,
+    "public_url": "jobs/full-stack-developer-phppython-reactjs-zealous-healthcare-services-1760751",
+    "title": "Full Stack Developer – PHP/Python & React.js",
+    "organization_id": 1499306,
+    "type": "jobs",
+    "subtype": "jobs",
+    "regn_open": 1,
+    "updated_at": "2026-10-03T18:29:06+05:30",
+    "region": "online",
+    "visibility": "public",
+    "details": "<p><strong>Zealous Healthcare Services is hiring for Full Stack Developer &ndash; PHP/Python &amp; React.js</strong></p>\n<p><strong>Responsibilities</strong></p>\n<ul>\n<li>Develop and maintain web applications using Core PHP, Laravel, Python, Django, Django REST Framework, and/or FastAPI.</li>\n<li>Build scalable RESTful APIs, microservices, backend services, and secure REST/JSON integrations.</li>\n<li>Create responsive and reusable interfaces using React.js, JavaScript ES6+, HTML5, CSS3, jQuery, AJAX, Bootstrap 5, React Hooks, and state-management approaches.</li>\n<li>Design and optimize MySQL and/or PostgreSQL databases, queries, scheduled jobs, background workers, and workflow automation.</li>\n<li>Implement authentication, authorization, RBAC, third-party API integrations, testing, debugging, performance improvements, and application security practices.</li>\n<li>Deploy and maintain solutions on Linux and cloud platforms such as AWS or DigitalOcean.</li>\n<li>Use Git, participate in code reviews, follow Agile practices, and collaborate with cross-functional teams on technical solutions.</li>\n</ul>\n<p><strong>Requirements</strong></p>\n<ul>\n<li>1&ndash;4 years of professional Full Stack Development experience.</li>\n<li>Bachelor&rsquo;s degree in Computer Science, Information Technology, or a related field.</li>\n<li>Strong hands-on experience in PHP/Laravel or Python/Django/FastAPI, along with React.js.</li>\n<li>Working knowledge of REST APIs, JSON, database design, query optimization, debugging, and performance-focused development.</li>\n<li>Experience with Linux environments, Git, cron jobs, background tasks, and version control workflows.</li>\n<li>Exposure to Redux or Context API, JWT/OAuth, Celery, Redis, Docker, CI/CD, microservices, AWS/DigitalOcean, CRM dashboards, reporting, automation, or AI/ML integrations will be an advantage.</li>\n<li>Willingness to work rotational shifts and communicate effectively with technical and cross-functional stakeholders.</li>\n</ul>",
+    "short_id": "UZkR9t4",
+    "logoUrl2": "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/6ab3c1c74d4a2_organisation_image-gOQfPCEfK6663987907bsMGrfgWEI.png",
+    "organisation": {
+     "id": 1499306,
+     "name": "Zealous Healthcare Services",
+     "public_url": "c/zealous-healthcare-services-1499306",
+     "logoUrl": "https://d8it4huxumps7.cloudfront.net/images/partners/new_organisation_image-gOQfPCEfK6663987907bsMGrfgWEI.png",
+     "logoUrl2": "https://d8it4huxumps7.cloudfront.net/images/partners/new_organisation_image-gOQfPCEfK6663987907bsMGrfgWEI.png",
+     "show_evaluator_login_link": false,
+     "official_email_domains": null,
+     "tier": 2
+    },
+    "seo_url": "https://unstop.com/jobs/full-stack-developer-phppython-reactjs-zealous-healthcare-services-1760751",
+    "status": "LIVE",
+    "tags": [],
+    "thumb": null,
+    "isPaid": false,
+    "festival": null,
+    "prizes": [],
+    "address_with_country_logo": {
+     "address": "",
+     "city": "",
+     "state": "",
+     "country": ""
+    },
+    "short_url": "https://unstop.com/o/UZkR9t4",
+    "workfunction": [
+     {
+      "id": 2007,
+      "name": "Full Stack Development",
+      "description": "",
+      "created_at": "2026-02-06T23:31:46+05:30",
+      "updated_at": "2026-02-06T23:31:46+05:30",
+      "work_function_name": null,
+      "batch_id": 11,
+      "pivot": {
+       "entity_id": 1760751,
+       "subject_id": 2007,
+       "id": 6222169,
+       "ai_generated": true
+      }
+     }
+    ],
+    "assignedTag": {
+     "tag": null
+    },
+    "opportunity_config": {
+     "id": 1456515,
+     "opportunity_id": 1760751,
+     "banner_config": "{\"color\":\"color-bg8\",\"text\":\"Full Stack Developer \\u2013 PHP\\/Python & React.js\",\"type\":3,\"banner_data\":[4]}",
+     "show_registrations_count": 0,
+     "show_impressions": 1,
+     "show_team_size": 1,
+     "show_region": 1
+    },
+    "payment_services": [],
+    "filters": [
+     {
+      "id": 421,
+      "name": "Experienced Professionals",
+      "type": "eligible",
+      "subtype": null,
+      "file_name": "corporate",
+      "domain_id": 0,
+      "icon_url": "https://d8it4huxumps7.cloudfront.net/images/icons/color_icons/corporate.svg"
+     }
+    ],
+    "required_skills": [
+     {
+      "id": 646777,
+      "skill": "MySQL",
+      "skill_name": "MySQL",
+      "pivot": {
+       "entity_id": 1760751,
+       "subject_id": 646777,
+       "id": 6222164,
+       "ai_generated": true
+      }
+     },
+     {
+      "id": 643226,
+      "skill": "API Development (REST)",
+      "skill_name": "API Development (REST)",
+      "pivot": {
+       "entity_id": 1760751,
+       "subject_id": 643226,
+       "id": 6222165,
+       "ai_generated": true
+      }
+     },
+     {
+      "id": 644627,
+      "skill": "PHP",
+      "skill_name": "PHP",
+      "pivot": {
+       "entity_id": 1760751,
+       "subject_id": 644627,
+       "id": 6222166,
+       "ai_generated": true
+      }
+     },
+     {
+      "id": 644744,
+      "skill": "Python Development",
+      "skill_name": "Python Development",
+      "pivot": {
+       "entity_id": 1760751,
+       "subject_id": 644744,
+       "id": 6222167,
+       "ai_generated": true
+      }
+     },
+     {
+      "id": 644778,
+      "skill": "React.js",
+      "skill_name": "React.js",
+      "pivot": {
+       "entity_id": 1760751,
+       "subject_id": 644778,
+       "id": 6222168,
+       "ai_generated": true
+      }
+     }
+    ],
+    "locations": [
+     {
+      "id": 1852251,
+      "city": "Chennai",
+      "state": "Tamil Nadu",
+      "country": "India",
+      "addressable_id": 1760751,
+      "addressable_type": "App\\Model\\Opportunity"
+     }
+    ],
+    "jobDetail": {
+     "entity_id": 1760751,
+     "currency": "fa-rupee",
+     "locations": [
+      "Chennai"
+     ],
+     "type": "in_office",
+     "show_salary": 0,
+     "min_experience": null,
+     "max_experience": null,
+     "timing": "full_time",
+     "paid_unpaid": "paid",
+     "pay_in": "annually",
+     "not_disclosed": false
+    },
+    "end_date": "2026-10-07T23:59:59+05:30",
+    "approved_date": "2026-09-23 17:42:29 GMT+0530",
+    "viewsCount": 5796,
+    "registerCount": 28,
+    "regnRequirements": {
+     "opportunity_id": 1760751,
+     "start_regn_dt": "2026-09-23T00:00:00+05:30",
+     "end_regn_dt": "2026-10-07T23:59:59+05:30",
+     "show_deadline": 1,
+     "min_team_size": 1,
+     "max_team_size": 1,
+     "work_location_type": "city",
+     "eligibility": "{\"sector\":[\"corporates\"],\"experience\":[\"1 year\",\"2 years\",\"3 years\",\"4 years\"],\"professionalEligibility\":{\"bSchools\":[],\"engineering\":[],\"arts\":[],\"medicine\":[],\"law\":[]}}",
+     "reg_status": "STARTED",
+     "remainingDaysArray": {
+      "durations": 4,
+      "text": " days left"
+     },
+     "remain_days": "4 days left",
+     "remaining_time": 349788
+    }
+   },
+   {
+    "id": 1748639,
+    "public_url": "jobs/python-developer-v-patrol-1748639",
+    "title": "Python Developer",
+    "organization_id": 912288,
+    "type": "jobs",
+    "subtype": "jobs",
+    "regn_open": 1,
+    "updated_at": "2026-09-04T00:08:48+05:30",
+    "region": "online",
+    "visibility": "public",
+    "details": "<p><strong>Responsibilities:</strong></p>\n<ul>\n<li>Design, develop, and maintain scalable backend applications using Python.</li>\n<li>Build and maintain RESTful APIs using FastAPI.</li>\n<li>Develop and integrate microservices for scalable backend systems.</li>\n<li>Work with MongoDB and SQL databases for data storage and management.</li>\n<li>Implement caching and performance optimization using Redis.</li>\n<li>Write clean, maintainable, and efficient Python code.</li>\n<li>Develop, test, debug, and optimize backend services.</li>\n<li>Collaborate with frontend developers, QA, and other engineering teams.</li>\n<li>Troubleshoot production issues and improve application performance.</li>\n<li>Participate in code reviews and follow best practices for software development.</li>\n</ul>",
+    "short_id": "MDb0I6Y",
+    "logoUrl2": "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a99226b6daf5_v_patrol_logo.jpg",
+    "organisation": {
+     "id": 912288,
+     "name": "V Patrol",
+     "public_url": "c/v-patrol-912288",
+     "logoUrl": "",
+     "logoUrl2": "",
+     "show_evaluator_login_link": false,
+     "official_email_domains": null,
+     "tier": null
+    },
+    "seo_url": "https://unstop.com/jobs/python-developer-v-patrol-1748639",
+    "status": "LIVE",
+    "tags": [],
+    "thumb": null,
+    "isPaid": false,
+    "festival": null,
+    "prizes": [],
+    "address_with_country_logo": {
+     "address": "",
+     "city": "",
+     "state": "",
+     "country": ""
+    },
+    "short_url": "https://unstop.com/o/MDb0I6Y",
+    "workfunction": [
+     {
+      "id": 2004,
+      "name": "Software Development",
+      "description": "",
+      "created_at": "2026-02-06T23:31:46+05:30",
+      "updated_at": "2026-02-06T23:31:46+05:30",
+      "work_function_name": null,
+      "batch_id": 11,
+      "pivot": {
+       "entity_id": 1748639,
+       "subject_id": 2004,
+       "id": 5990764,
+       "ai_generated": true
+      }
+     },
+     {
+      "id": 2006,
+      "name": "Backend Development",
+      "description": "",
+      "created_at": "2026-02-06T23:31:46+05:30",
+      "updated_at": "2026-02-06T23:31:46+05:30",
+      "work_function_name": null,
+      "batch_id": 11,
+      "pivot": {
+       "entity_id": 1748639,
+       "subject_id": 2006,
+       "id": 5990765,
+       "ai_generated": true
+      }
+     }
+    ],
+    "assignedTag": {
+     "tag": null
+    },
+    "opportunity_config": {
+     "id": 1447511,
+     "opportunity_id": 1748639,
+     "banner_config": "{\"color\":\"color-bg8\",\"text\":\"Python Developer\",\"type\":1,\"banner_data\":[4]}",
+     "show_registrations_count": 0,
+     "show_impressions": 1,
+     "show_team_size": 1,
+     "show_region": 1
+    },
+    "payment_services": [],
+    "filters": [
+     {
+      "id": 679,
+      "name": "Fresher",
+      "type": "eligible",
+      "subtype": null,
+      "file_name": "fresher",
+      "domain_id": 0,
+      "icon_url": "https://d8it4huxumps7.cloudfront.net/images/icons/color_icons/fresher.svg"
+     }
+    ],
+    "required_skills": [
+     {
+      "id": 646756,
+      "skill": "MongoDB",
+      "skill_name": "MongoDB",
+      "pivot": {
+       "entity_id": 1748639,
+       "subject_id": 646756,
+       "id": 5990756,
+       "ai_generated": true
+      }
+     },
+     {
+      "id": 647074,
+      "skill": "Python",
+      "skill_name": "Python",
+      "pivot": {
+       "entity_id": 1748639,
+       "subject_id": 647074,
+       "id": 5990757,
+       "ai_generated": true
+      }
+     },
+     {
+      "id": 643226,
+      "skill": "API Development (REST)",
+      "skill_name": "API Development (REST)",
+      "pivot": {
+       "entity_id": 1748639,
+       "subject_id": 643226,
+       "id": 5990758,
+       "ai_generated": true
+      }
+     },
+     {
+      "id": 644382,
+      "skill": "Microservices Architecture",
+      "skill_name": "Microservices Architecture",
+      "pivot": {
+       "entity_id": 1748639,
+       "subject_id": 644382,
+       "id": 5990759,
+       "ai_generated": true
+      }
+     },
+     {
+      "id": 644791,
+      "skill": "Redis",
+      "skill_name": "Redis",
+      "pivot": {
+       "entity_id": 1748639,
+       "subject_id": 644791,
+       "id": 5990760,
+       "ai_generated": true
+      }
+     }
+    ],
+    "locations": [
+     {
+      "id": 1835748,
+      "city": "Gurgaon",
+      "state": "Haryana",
+      "country": "India",
+      "addressable_id": 1748639,
+      "addressable_type": "App\\Model\\Opportunity"
+     }
+    ],
+    "jobDetail": {
+     "entity_id": 1748639,
+     "max_salary": 660000,
+     "currency": "fa-rupee",
+     "locations": [
+      "Gurgaon"
+     ],
+     "type": "in_office",
+     "min_salary": 660000,
+     "show_salary": 1,
+     "min_experience": null,
+     "max_experience": null,
+     "timing": "full_time",
+     "paid_unpaid": "paid",
+     "pay_in": "annually",
+     "not_disclosed": false
+    },
+    "end_date": "2026-09-17T00:00:00+05:30",
+    "approved_date": "2026-09-03 15:16:25 GMT+0530",
+    "viewsCount": 50312,
+    "registerCount": 2076,
+    "regnRequirements": {
+     "opportunity_id": 1748639,
+     "start_regn_dt": "2026-09-03T00:00:00+05:30",
+     "end_regn_dt": "2026-09-17T00:00:00+05:30",
+     "show_deadline": 1,
+     "min_team_size": 1,
+     "max_team_size": 1,
+     "work_location_type": "city",
+     "eligibility": "{\"sector\":[\"fresher\"],\"engineering\":[\"allCourses\",{\"course\":\"btech\",\"type\":\"engineering\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":4},{\"course\":\"mtech\",\"type\":\"engineering\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":2},{\"course\":\"integrated\",\"type\":\"engineering\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":5},{\"course\":\"engOthers\",\"type\":\"engineering\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":3},{\"course\":\"bca\",\"type\":\"engineering\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":3},{\"course\":\"mca\",\"type\":\"engineering\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":2},{\"course\":\"mca1\",\"type\":\"engineering\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":3},{\"course\":\"mcm\",\"type\":\"engineering\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":2},{\"course\":\"phdEng\",\"type\":\"engineering\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":5},{\"course\":\"diploma\",\"type\":\"engineering\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":0}],\"bSchools\":[],\"arts\":[\"allCourses\",{\"course\":\"bsc\",\"type\":\"arts\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":3},{\"course\":\"msc\",\"type\":\"arts\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":2},{\"course\":\"ba\",\"type\":\"arts\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":3},{\"course\":\"ma\",\"type\":\"arts\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":2},{\"course\":\"artsOthers\",\"type\":\"arts\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":3},{\"course\":\"mdes\",\"type\":\"arts\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":2},{\"course\":\"march\",\"type\":\"arts\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":2},{\"course\":\"bdes\",\"type\":\"arts\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":3},{\"course\":\"barch\",\"type\":\"arts\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":5},{\"course\":\"bftech\",\"type\":\"arts\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":4},{\"course\":\"bplan\",\"type\":\"arts\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":4},{\"course\":\"mplan\",\"type\":\"arts\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":2},{\"course\":\"phdArts\",\"type\":\"arts\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":5},{\"course\":\"mftech\",\"type\":\"arts\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":2},{\"course\":\"bfa\",\"type\":\"arts\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":4},{\"course\":\"mfa\",\"type\":\"arts\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":2},{\"course\":\"bs\",\"type\":\"arts\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":3},{\"course\":\"ms\",\"type\":\"arts\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":2},{\"course\":\"bed\",\"type\":\"arts\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":2},{\"course\":\"med\",\"type\":\"arts\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":2},{\"course\":\"beled\",\"type\":\"arts\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":4},{\"course\":\"bped\",\"type\":\"arts\",\"programme\":[\"all\"],\"passoutYear\":[\"all\"],\"specialization\":[\"all\"],\"duration\":2}],\"medicine\":[],\"law\":[],\"others\":[\"all\"],\"experience\":[\"all\"],\"studentPassoutYearsSelected\":[\"all\"],\"fresherPassoutYearsSelected\":[2026],\"schoolFilteredClasses\":[\"all\"],\"minMarks\":{\"high_school_perc\":0,\"high_school_cgpa\":0},\"locations\":[],\"location_type\":\"all\",\"professionalEligibility\":null,\"fresherEligibility\":null}",
+     "reg_status": "FINISHED",
+     "remainingDaysArray": {
+      "durations": null,
+      "text": "Ended"
+     },
+     "remain_days": "Ended",
+     "remaining_time": -1464637
+    }
+   },
+   {
+    "id": 1743720,
+    "public_url": "jobs/python-engineer-turing-global-india-private-limited-1743720",
+    "title": "Python Engineer",
+    "organization_id": 1593262,
+    "type": "jobs",
+    "subtype": "jobs",
+    "regn_open": 1,
+    "updated_at": "2026-09-04T13:22:15+05:30",
+    "region": "online",
+    "visibility": "public",
+    "details": "<p><strong>About the project: </strong>we are building LLM evaluation and training datasets to train LLMs to work on realistic software engineering problems. One of our approaches in this project is to build verifiable SWE tasks based on public repository histories in a synthetic approach with human-in-the-loop, while expanding the dataset coverage to different types of tasks in terms of programming language, difficulty level, and etc.</p>\n<p><strong>About the Role:&nbsp;</strong>We are looking for experienced software engineers (tech lead level) who are familiar with high-quality public GitHub repositories and can contribute to this project. This role involves hands-on software engineering work, including development environment automation, issue triaging, and evaluating test coverage and quality</p>\n<p><strong>Why Join Us?&nbsp;</strong>Turing is one of the world&rsquo;s fastest-growing AI companies accelerating the advancement and deployment of powerful AI systems. You&rsquo;ll be at the forefront of evaluating how LLMs interact with real code, influencing the future of AI-assisted software development. This is a unique opportunity to blend practical software engineering with AI research.</p>\n<p><strong>What does day-to-day look like</strong>:</p>\n<ul>\n<li>Analyze and triage GitHub issues across trending open-source libraries.</li>\n<li>Set up and configure code repositories, including Dockerization and environment setup.</li>\n<li>Evaluate unit test coverage and quality.</li>\n<li>Modify and run codebases locally to assess LLM performance in bug-fixing scenarios.</li>\n<li>Collaborate with researchers to design and identify repositories and issues that are challenging for LLMs.</li>\n<li>Opportunities to lead a team of junior engineers to collaborate on projects.</li>\n</ul>\n<p><strong>Required Skills:</strong></p>\n<ul>\n<li>Minimum 3+ years of overall experience</li>\n<li>Strong experience with at least one of the following languages: &nbsp;Python</li>\n<li>Proficiency with Git, Docker, and basic software pipeline setup.</li>\n<li>Ability to understand and navigate complex codebases.</li>\n<li>Comfortable running, modifying, and testing real-world projects locally.</li>\n<li>Experience contributing to or evaluating open-source projects is a plus.</li>\n</ul>\n<p><strong>Nice to Have:</strong></p>\n<ul>\n<li>Previous participation in LLM research or evaluation projects.</li>\n<li>Experience building or testing developer tools or automation agents.</li>\n</ul>\n<p><strong>Perks of Freelancing With Turing:</strong></p>\n<ul>\n<li>Work in a fully remote environment.</li>\n<li>Opportunity to work on cutting-edge AI projects with leading LLM companies.</li>\n</ul>\n<p><strong>Offer Details:</strong></p>\n<ul>\n<li><strong>Commitments Required</strong>: At least 4 hours per day and a minimum of 20 hours per week, with an overlap of 4 hours with PST. (We have 3 options of time commitment: 20 hrs/week, 30 hrs/week, or 40 hrs/week)</li>\n<li><strong>Employment type</strong>: Contractor assignment (no medical/paid leave)</li>\n<li><strong>Duration of contract&nbsp;</strong>: 3 months; [expected start date is next week]</li>\n</ul>\n<p><strong>Evaluation Process (approximately 75 mins) :</strong></p>\n<ul>\n<li>Two rounds of interviews (60 min technical + 30 min technical &amp; cultural discussion)</li>\n</ul>",
+    "short_id": "IwEt368",
+    "logoUrl2": "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/6a8c898a00e5c_organisation_image-rQFx5q5lU7849827766P65lMbfIcN.png",
+    "organisation": {
+     "id": 1593262,
+     "name": "Turing Global India Private Limited",
+     "public_url": "c/turing-global-india-private-limited-1593262",
+     "logoUrl": "https://d8it4huxumps7.cloudfront.net/images/partners/new_organisation_image-rQFx5q5lU7849827766P65lMbfIcN.png",
+     "logoUrl2": "https://d8it4huxumps7.cloudfront.net/images/partners/new_organisation_image-rQFx5q5lU7849827766P65lMbfIcN.png",
+     "show_evaluator_login_link": false,
+     "official_email_domains": null,
+     "tier": null
+    },
+    "seo_url": "https://unstop.com/jobs/python-engineer-turing-global-india-private-limited-1743720",
+    "status": "LIVE",
+    "tags": [],
+    "thumb": null,
+    "isPaid": false,
+    "festival": null,
+    "prizes": [],
+    "address_with_country_logo": {
+     "address": "",
+     "city": "",
+     "state": "",
+     "country": ""
+    },
+    "short_url": "https://unstop.com/o/IwEt368",
+    "workfunction": [
+     {
+      "id": 2004,
+      "name": "Software Development",
+      "description": "",
+      "created_at": "2026-02-06T23:31:46+05:30",
+      "updated_at": "2026-02-06T23:31:46+05:30",
+      "work_function_name": null,
+      "batch_id": 11,
+      "pivot": {
+       "entity_id": 1743720,
+       "subject_id": 2004,
+       "id": 5889233,
+       "ai_generated": true
+      }
+     },
+     {
+      "id": 2107,
+      "name": "AI Engineering",
+      "description": "",
+      "created_at": "2026-04-09T00:17:10+05:30",
+      "updated_at": "2026-04-09T00:17:10+05:30",
+      "work_function_name": null,
+      "batch_id": 11,
+      "pivot": {
+       "entity_id": 1743720,
+       "subject_id": 2107,
+       "id": 5889234,
+       "ai_generated": true
+      }
+     }
+    ],
+    "assignedTag": {
+     "tag": null
+    },
+    "opportunity_config": {
+     "id": 1443879,
+     "opportunity_id": 1743720,
+     "banner_config": "{\"color\":\"color-bg4\",\"text\":\"Remote Python Engineer\",\"type\":6,\"banner_data\":[3]}",
+     "show_registrations_count": 0,
+     "show_impressions": 1,
+     "show_team_size": 1,
+     "show_region": 1
+    },
+    "payment_services": [],
+    "filters": [
+     {
+      "id": 421,
+      "name": "Experienced Professionals",
+      "type": "eligible",
+      "subtype": null,
+      "file_name": "corporate",
+      "domain_id": 0,
+      "icon_url": "https://d8it4huxumps7.cloudfront.net/images/icons/color_icons/corporate.svg"
+     }
+    ],
+    "required_skills": [
+     {
+      "id": 646248,
+      "skill": "Git Version Control",
+      "skill_name": "Git Version Control",
+      "pivot": {
+       "entity_id": 1743720,
+       "subject_id": 646248,
+       "id": 5889228,
+       "ai_generated": true
+      }
+     },
+     {
+      "id": 647074,
+      "skill": "Python",
+      "skill_name": "Python",
+      "pivot": {
+       "entity_id": 1743720,
+       "subject_id": 647074,
+       "id": 5889229,
+       "ai_generated": true
+      }
+     },
+     {
+      "id": 647356,
+      "skill": "Software Development Life Cycle (SDLC)",
+      "skill_name": "Software Development Life Cycle (SDLC)",
+      "pivot": {
+       "entity_id": 1743720,
+       "subject_id": 647356,
+       "id": 5889230,
+       "ai_generated": true
+      }
+     },
+     {
+      "id": 647611,
+      "skill": "Unit Testing",
+      "skill_name": "Unit Testing",
+      "pivot": {
+       "entity_id": 1743720,
+       "subject_id": 647611,
+       "id": 5889231,
+       "ai_generated": true
+      }
+     },
+     {
+      "id": 643664,
+      "skill": "Docker",
+      "skill_name": "Docker",
+      "pivot": {
+       "entity_id": 1743720,
+       "subject_id": 643664,
+       "id": 5889232,
+       "ai_generated": true
+      }
+     }
+    ],
+    "locations": [],
+    "jobDetail": {
+     "entity_id": 1743720,
+     "currency": "fa-rupee",
+     "locations": [],
+     "type": "wfh",
+     "show_salary": 0,
+     "min_experience": null,
+     "max_experience": null,
+     "timing": "contractual",
+     "paid_unpaid": "paid",
+     "pay_in": "monthly",
+     "not_disclosed": false
+    },
+    "end_date": "2026-09-07T00:00:00+05:30",
+    "approved_date": "2026-08-24 23:43:00 GMT+0530",
+    "viewsCount": 16246,
+    "registerCount": 60,
+    "regnRequirements": {
+     "opportunity_id": 1743720,
+     "start_regn_dt": "2026-08-24T00:00:00+05:30",
+     "end_regn_dt": "2026-09-07T00:00:00+05:30",
+     "show_deadline": 1,
+     "min_team_size": 1,
+     "max_team_size": 1,
+     "work_location_type": "city",
+     "eligibility": "{\"sector\":[\"corporates\"],\"engineering\":[],\"bSchools\":[],\"arts\":[],\"medicine\":[],\"law\":[],\"others\":[\"all\"],\"experience\":[\"3 years\",\"4 years\",\"5 years\",\"6 years\",\"7 years\"],\"studentPassoutYearsSelected\":[\"all\"],\"fresherPassoutYearsSelected\":[\"all\"],\"schoolFilteredClasses\":[\"all\"],\"minMarks\":{\"high_school_perc\":0,\"high_school_cgpa\":0},\"locations\":[],\"location_type\":\"all\",\"professionalEligibility\":{\"engineering\":[],\"bSchools\":[],\"arts\":[],\"medicine\":[],\"law\":[]},\"fresherEligibility\":{\"engineering\":[],\"bSchools\":[],\"arts\":[],\"medicine\":[],\"law\":[]}}",
+     "reg_status": "FINISHED",
+     "remainingDaysArray": {
+      "durations": null,
+      "text": "Ended"
+     },
+     "remain_days": "Ended",
+     "remaining_time": -2328637
+    }
+   },
+   {
+    "id": 1730986,
+    "public_url": "jobs/python-developer-coffeebeans-consulting-1730986",
+    "title": "Python Developer",
+    "organization_id": 170918,
+    "type": "jobs",
+    "subtype": "jobs",
+    "regn_open": 1,
+    "updated_at": "2026-08-17T15:55:53+05:30",
+    "region": "online",
+    "visibility": "public",
+    "details": "<p><strong>CoffeeBeans Consulting is hiring for Python Developer</strong></p>\n<p><strong>About the Company</strong></p>\n<p>CoffeeBeans Consulting is a dynamic and innovative consulting firm specializing in cutting-edge technology solutions. We are committed to delivering high-quality, scalable, and robust systems for our clients across various industries. Our team thrives on solving complex challenges and fostering a collaborative environment where creativity and technical excellence are highly valued.</p>\n<p><strong>Responsibilities</strong></p>\n<ul>\n<li>Design, develop, and maintain robust backend systems using Python and FastAPI.</li>\n<li>Implement and manage enterprise multi-agent systems with a strong understanding of agent orchestration, memory, grounding, tool calling, and agent-to-agent communication.</li>\n<li>Build AI agents using Google ADK or similar frameworks (LangGraph, CrewAI, AutoGen).</li>\n<li>Integrate AI agents with existing enterprise systems and APIs, including MCP.</li>\n<li>Deploy and manage applications on Google Cloud Platform (GCP) using services like Cloud Run and Pub/Sub.</li>\n<li>Develop and maintain CI/CD pipelines using CircleCI and Terraform.</li>\n<li>Apply strong DevOps knowledge to ensure seamless deployment and operational efficiency.</li>\n<li>Utilize RAG, prompt engineering, grounding, and evaluation techniques to optimize agent performance.</li>\n<li>Collaborate with cross-functional teams to define, design, and ship new features.</li>\n</ul>\n<p><strong>Requirements</strong></p>\n<ul>\n<li>4-6 years of experience in backend development.</li>\n<li>Hands-on experience building enterprise multi-agent systems using Google ADK or similar frameworks.</li>\n<li>Strong understanding of agent orchestration, memory, grounding, tool calling, and agent-to-agent communication.</li>\n<li>Proficiency in Python development.</li>\n<li>Experience integrating agents with enterprise systems and APIs, including MCP.</li>\n<li>Experience with A2A Agents Framework.</li>\n<li>Understanding of RAG, prompt engineering, grounding, and evaluation.</li>\n<li>Experience deploying applications on GCP using Cloud Run, Pub/Sub, and CI/CD pipelines.</li>\n<li>Familiarity with GCP, FastAPI, CircleCI, and Terraform.</li>\n<li>Strong problem-solving skills and ability to work in a fast-paced environment.</li>\n</ul>",
+    "short_id": "F26mVYy",
+    "logoUrl2": "https://d8it4huxumps7.cloudfront.net/images/icons/jobs.svg",
+    "organisation": {
+     "id": 170918,
+     "name": "CoffeeBeans Consulting",
+     "public_url": "c/coffeebeans-consulting-recruiter-career-interview-selection-process-job-profile-articles-videos-170918",
+     "logoUrl": "",
+     "logoUrl2": "",
+     "show_evaluator_login_link": false,
+     "official_email_domains": null,
+     "tier": 3
+    },
+    "seo_url": "https://unstop.com/jobs/python-developer-coffeebeans-consulting-1730986",
+    "status": "LIVE",
+    "tags": [],
+    "thumb": null,
+    "isPaid": false,
+    "festival": null,
+    "prizes": [],
+    "address_with_country_logo": {
+     "address": "",
+     "city": "",
+     "state": "",
+     "country": ""
+    },
+    "short_url": "https://unstop.com/o/F26mVYy",
+    "workfunction": [
+     {
+      "id": 2004,
+      "name": "Software Development",
+      "description": "",
+      "created_at": "2026-02-06T23:31:46+05:30",
+      "updated_at": "2026-02-06T23:31:46+05:30",
+      "work_function_name": null,
+      "batch_id": 11,
+      "pivot": {
+       "entity_id": 1730986,
+       "subject_id": 2004,
+       "id": 5712003,
+       "ai_generated": true
+      }
+     }
+    ],
+    "assignedTag": {
+     "tag": null
+    },
+    "opportunity_config": {
+     "id": 1431180,
+     "opportunity_id": 1730986,
+     "banner_config": "{\"color\":\"color-bg1\",\"text\":\"Python Developer\",\"type\":4,\"banner_data\":[]}",
+     "show_registrations_count": 0,
+     "show_impressions": 1,
+     "show_team_size": 1,
+     "show_region": 1
+    },
+    "payment_services": [],
+    "filters": [
+     {
+      "id": 421,
+      "name": "Experienced Professionals",
+      "type": "eligible",
+      "subtype": null,
+      "file_name": "corporate",
+      "domain_id": 0,
+      "icon_url": "https://d8it4huxumps7.cloudfront.net/images/icons/color_icons/corporate.svg"
+     }
+    ],
+    "required_skills": [
+     {
+      "id": 645559,
+      "skill": "API Integration",
+      "skill_name": "API Integration",
+      "pivot": {
+       "entity_id": 1730986,
+       "subject_id": 645559,
+       "id": 5711998,
+       "ai_generated": true
+      }
+     },
+     {
+      "id": 647074,
+      "skill": "Python",
+      "skill_name": "Python",
+      "pivot": {
+       "entity_id": 1730986,
+       "subject_id": 647074,
+       "id": 5711999,
+       "ai_generated": true
+      }
+     },
+     {
+      "id": 643428,
+      "skill": "CI/CD",
+      "skill_name": "CI/CD",
+      "pivot": {
+       "entity_id": 1730986,
+       "subject_id": 643428,
+       "id": 5712000,
+       "ai_generated": true
+      }
+     },
+     {
+      "id": 643937,
+      "skill": "Google Cloud Platform (GCP)",
+      "skill_name": "Google Cloud Platform (GCP)",
+      "pivot": {
+       "entity_id": 1730986,
+       "subject_id": 643937,
+       "id": 5712001,
+       "ai_generated": true
+      }
+     },
+     {
+      "id": 645202,
+      "skill": "Terraform",
+      "skill_name": "Terraform",
+      "pivot": {
+       "entity_id": 1730986,
+       "subject_id": 645202,
+       "id": 5712002,
+       "ai_generated": true
+      }
+     }
+    ],
+    "locations": [
+     {
+      "id": 1808152,
+      "city": "Chennai",
+      "state": "Tamil Nadu",
+      "country": "India",
+      "addressable_id": 1730986,
+      "addressable_type": "App\\Model\\Opportunity"
+     },
+     {
+      "id": 1808153,
+      "city": "Coimbatore",
+      "state": "Tamil Nadu",
+      "country": "India",
+      "addressable_id": 1730986,
+      "addressable_type": "App\\Model\\Opportunity"
+     },
+     {
+      "id": 1808154,
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "country": "India",
+      "addressable_id": 1730986,
+      "addressable_type": "App\\Model\\Opportunity"
+     },
+     {
+      "id": 1808155,
+      "city": "Hyderabad",
+      "state": "Telangana",
+      "country": "India",
+      "addressable_id": 1730986,
+      "addressable_type": "App\\Model\\Opportunity"
+     },
+     {
+      "id": 1808156,
+      "city": "Gurgaon",
+      "state": "Haryana",
+      "country": "India",
+      "addressable_id": 1730986,
+      "addressable_type": "App\\Model\\Opportunity"
+     }
+    ],
+    "jobDetail": {
+     "entity_id": 1730986,
+     "max_salary": 1500000,
+     "currency": "fa-rupee",
+     "locations": [
+      "Chennai",
+      "Coimbatore",
+      "Bangalore",
+      "Hyderabad",
+      "Gurgaon"
+     ],
+     "type": "hybrid",
+     "min_salary": 1000000,
+     "show_salary": 1,
+     "min_experience": null,
+     "max_experience": null,
+     "timing": "full_time",
+     "paid_unpaid": "paid",
+     "pay_in": "annually",
+     "not_disclosed": false
+    },
+    "end_date": "2026-08-19T00:00:00+05:30",
+    "approved_date": "2026-08-05 13:49:42 GMT+0530",
+    "viewsCount": 16821,
+    "registerCount": 88,
+    "regnRequirements": {
+     "opportunity_id": 1730986,
+     "start_regn_dt": "2026-08-05T00:00:00+05:30",
+     "end_regn_dt": "2026-08-19T00:00:00+05:30",
+     "show_deadline": 1,
+     "min_team_size": 1,
+     "max_team_size": 1,
+     "work_location_type": "city",
+     "eligibility": "{\"sector\":[\"corporates\"],\"experience\":[\"4 years\",\"5 years\",\"6 years\"],\"fresherPassoutYearsSelected\":[\"all\"],\"studentPassoutYearsSelected\":[\"all\"],\"bSchools\":[],\"engineering\":[],\"arts\":[],\"medicine\":[],\"law\":[],\"fresherEligibility\":{\"bSchools\":[],\"engineering\":[],\"arts\":[],\"medicine\":[],\"law\":[]},\"professionalEligibility\":{\"bSchools\":[],\"engineering\":[],\"arts\":[],\"medicine\":[],\"law\":[]}}",
+     "reg_status": "FINISHED",
+     "remainingDaysArray": {
+      "durations": null,
+      "text": "Ended"
+     },
+     "remain_days": "Ended",
+     "remaining_time": -3970288
+    }
+   },
+   {
+    "id": 1734468,
+    "public_url": "jobs/junior-python-developer-altos-technologies-1734468",
+    "title": "Junior Python Developer",
+    "organization_id": 956087,
+    "type": "jobs",
+    "subtype": "jobs",
+    "regn_open": 1,
+    "updated_at": "2026-08-11T22:41:20+05:30",
+    "region": "online",
+    "visibility": "public",
+    "details": "<p><strong>About the Company</strong></p>\n<p>Altos Technologies is a dynamic and innovative technology firm dedicated to developing cutting-edge software solutions. We are committed to fostering a collaborative environment where talent thrives and creativity is encouraged. Join our team and contribute to impactful projects that push the boundaries of technology.</p>\n<p><strong>Responsibilities</strong></p>\n<ul>\n<li>Develop, test, and deploy robust and scalable Python applications.</li>\n<li>Collaborate with cross-functional teams to define, design, and ship new features.</li>\n<li>Write clean, maintainable, and efficient code.</li>\n<li>Participate in code reviews to ensure code quality and share knowledge.</li>\n<li>Troubleshoot, debug, and upgrade existing software.</li>\n<li>Implement security and data protection settings.</li>\n<li>Stay up-to-date with new technology trends and apply them to projects.</li>\n</ul>\n<p><strong>Requirements</strong></p>\n<ul>\n<li>Bachelor's degree in Computer Science, Engineering, or a related field.</li>\n<li>Proven experience as a Python Developer or in a similar role.</li>\n<li>Solid understanding of Python frameworks such as Django or Flask.</li>\n<li>Familiarity with front-end technologies (e.g., JavaScript, HTML5, CSS3) is a plus.</li>\n<li>Knowledge of database systems (e.g., PostgreSQL, MySQL).</li>\n<li>Experience with version control systems (e.g., Git).</li>\n<li>Strong problem-solving skills and attention to detail.</li>\n<li>Excellent communication and teamwork abilities.</li>\n<li>Ability to work in a fast-paced and agile development environment.</li>\n</ul>",
+    "short_id": "6Y3hn5z",
+    "logoUrl2": "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a79751838943_images_36.png",
+    "organisation": {
+     "id": 956087,
+     "name": "Altos Technologies",
+     "public_url": "c/altos-technologies-956087",
+     "logoUrl": "",
+     "logoUrl2": "",
+     "show_evaluator_login_link": false,
+     "official_email_domains": null,
+     "tier": null
+    },
+    "seo_url": "https://unstop.com/jobs/junior-python-developer-altos-technologies-1734468",
+    "status": "LIVE",
+    "tags": [],
+    "thumb": null,
+    "isPaid": false,
+    "festival": null,
+    "prizes": [],
+    "address_with_country_logo": {
+     "address": "",
+     "city": "",
+     "state": "",
+     "country": ""
+    },
+    "short_url": "https://unstop.com/o/6Y3hn5z",
+    "workfunction": [
+     {
+      "id": 2004,
+      "name": "Software Development",
+      "description": "",
+      "created_at": "2026-02-06T23:31:46+05:30",
+      "updated_at": "2026-02-06T23:31:46+05:30",
+      "work_function_name": null,
+      "batch_id": 11,
+      "pivot": {
+       "entity_id": 1734468,
+       "subject_id": 2004,
+       "id": 5754900,
+       "ai_generated": true
+      }
+     },
+     {
+      "id": 2006,
+      "name": "Backend Development",
+      "description": "",
+      "created_at": "2026-02-06T23:31:46+05:30",
+      "updated_at": "2026-02-06T23:31:46+05:30",
+      "work_function_name": null,
+      "batch_id": 11,
+      "pivot": {
+       "entity_id": 1734468,
+       "subject_id": 2006,
+       "id": 5754901,
+       "ai_generated": true
+      }
+     }
+    ],
+    "assignedTag": {
+     "tag": null
+    },
+    "opportunity_config": {
+     "id": 1434488,
+     "opportunity_id": 1734468,
+     "banner_config": "{\"color\":\"color-bg6\",\"text\":\"Junior Python Developer\",\"type\":5,\"banner_data\":[1]}",
+     "show_registrations_count": 0,
+     "show_impressions": 1,
+     "show_team_size": 1,
+     "show_region": 1
+    },
+    "payment_services": [],
+    "filters": [
+     {
+      "id": 421,
+      "name": "Experienced Professionals",
+      "type": "eligible",
+      "subtype": null,
+      "file_name": "corporate",
+      "domain_id": 0,
+      "icon_url": "https://d8it4huxumps7.cloudfront.net/images/icons/color_icons/corporate.svg"
+     }
+    ],
+    "required_skills": [
+     {
+      "id": 647074,
+      "skill": "Python",
+      "skill_name": "Python",
+      "pivot": {
+       "entity_id": 1734468,
+       "subject_id": 647074,
+       "id": 5754898,
+       "ai_generated": true
+      }
+     },
+     {
+      "id": 1373,
+      "skill": "Problem Solving",
+      "skill_name": "Problem Solving",
+      "pivot": {
+       "entity_id": 1734468,
+       "subject_id": 1373,
+       "id": 5754899,
+       "ai_generated": true
+      }
+     }
+    ],
+    "locations": [
+     {
+      "id": 1812740,
+      "city": "Kothi",
+      "state": "Madhya Pradesh",
+      "country": "India",
+      "addressable_id": 1734468,
+      "addressable_type": "App\\Model\\Opportunity"
+     }
+    ],
+    "jobDetail": {
+     "entity_id": 1734468,
+     "max_salary": 20000,
+     "currency": "fa-rupee",
+     "locations": [
+      "Kothi"
+     ],
+     "type": "wfh",
+     "min_salary": 20000,
+     "show_salary": 1,
+     "min_experience": null,
+     "max_experience": null,
+     "timing": "full_time",
+     "paid_unpaid": "paid",
+     "pay_in": "monthly",
+     "not_disclosed": false
+    },
+    "end_date": "2026-08-24T00:00:00+05:30",
+    "approved_date": "2026-08-10 12:20:57 GMT+0530",
+    "viewsCount": 43192,
+    "registerCount": 315,
+    "regnRequirements": {
+     "opportunity_id": 1734468,
+     "start_regn_dt": "2026-08-10T00:00:00+05:30",
+     "end_regn_dt": "2026-08-24T00:00:00+05:30",
+     "show_deadline": 1,
+     "min_team_size": 1,
+     "max_team_size": 1,
+     "work_location_type": "city",
+     "eligibility": "{\"sector\":[\"corporates\"],\"experience\":[\"1 year\",\"2 years\"],\"fresherPassoutYearsSelected\":[\"all\"],\"studentPassoutYearsSelected\":[\"all\"],\"fresherEligibility\":{\"bSchools\":[],\"engineering\":[],\"arts\":[],\"medicine\":[],\"law\":[]},\"professionalEligibility\":{\"bSchools\":[],\"engineering\":[],\"arts\":[],\"medicine\":[],\"law\":[]},\"bSchools\":[],\"engineering\":[],\"arts\":[],\"medicine\":[],\"law\":[]}",
+     "reg_status": "FINISHED",
+     "remainingDaysArray": {
+      "durations": null,
+      "text": "Ended"
+     },
+     "remain_days": "Ended",
+     "remaining_time": -3538288
+    }
+   }
+  ],
+  "first_page_url": "https://unstop.com/api/public/opportunity/search-result?&opportunity=jobs&searchTerm=python&per_page=5&page=1",
+  "from": 1,
+  "last_page": 1,
+  "last_page_url": "https://unstop.com/api/public/opportunity/search-result?&opportunity=jobs&searchTerm=python&per_page=5&page=133",
+  "links": [
+   {
+    "url": null,
+    "label": "&laquo; Previous",
+    "active": false
+   },
+   {
+    "url": "https://unstop.com/api/public/opportunity/search-result?&opportunity=jobs&searchTerm=python&per_page=5&page=1",
+    "label": "1",
+    "active": true
+   },
+   {
+    "url": "https://unstop.com/api/public/opportunity/search-result?&opportunity=jobs&searchTerm=python&per_page=5&page=2",
+    "label": "2",
+    "active": false
+   },
+   {
+    "url": "https://unstop.com/api/public/opportunity/search-result?&opportunity=jobs&searchTerm=python&per_page=5&page=3",
+    "label": "3",
+    "active": false
+   },
+   {
+    "url": "https://unstop.com/api/public/opportunity/search-result?&opportunity=jobs&searchTerm=python&per_page=5&page=4",
+    "label": "4",
+    "active": false
+   },
+   {
+    "url": "https://unstop.com/api/public/opportunity/search-result?&opportunity=jobs&searchTerm=python&per_page=5&page=5",
+    "label": "5",
+    "active": false
+   },
+   {
+    "url": "https://unstop.com/api/public/opportunity/search-result?&opportunity=jobs&searchTerm=python&per_page=5&page=6",
+    "label": "6",
+    "active": false
+   },
+   {
+    "url": "https://unstop.com/api/public/opportunity/search-result?&opportunity=jobs&searchTerm=python&per_page=5&page=7",
+    "label": "7",
+    "active": false
+   },
+   {
+    "url": "https://unstop.com/api/public/opportunity/search-result?&opportunity=jobs&searchTerm=python&per_page=5&page=8",
+    "label": "8",
+    "active": false
+   },
+   {
+    "url": "https://unstop.com/api/public/opportunity/search-result?&opportunity=jobs&searchTerm=python&per_page=5&page=9",
+    "label": "9",
+    "active": false
+   },
+   {
+    "url": "https://unstop.com/api/public/opportunity/search-result?&opportunity=jobs&searchTerm=python&per_page=5&page=10",
+    "label": "10",
+    "active": false
+   },
+   {
+    "url": null,
+    "label": "...",
+    "active": false
+   },
+   {
+    "url": "https://unstop.com/api/public/opportunity/search-result?&opportunity=jobs&searchTerm=python&per_page=5&page=132",
+    "label": "132",
+    "active": false
+   },
+   {
+    "url": "https://unstop.com/api/public/opportunity/search-result?&opportunity=jobs&searchTerm=python&per_page=5&page=133",
+    "label": "133",
+    "active": false
+   },
+   {
+    "url": "https://unstop.com/api/public/opportunity/search-result?&opportunity=jobs&searchTerm=python&per_page=5&page=2",
+    "label": "Next &raquo;",
+    "active": false
+   }
+  ],
+  "next_page_url": "https://unstop.com/api/public/opportunity/search-result?&opportunity=jobs&searchTerm=python&per_page=5&page=2",
+  "path": "https://unstop.com/api/public/opportunity/search-result?",
+  "per_page": 5,
+  "prev_page_url": null,
+  "to": 5,
+  "total": 663
+ }
+}

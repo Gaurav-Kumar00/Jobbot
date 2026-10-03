@@ -443,3 +443,61 @@ async def test_atlassian_remote_india_location(http):
     (job,) = (await AtlassianSource().fetch(target("atlassian", "atlassian"), http)).jobs
     loc = normalize_job(job).normalized.location
     assert loc.cities == ["bengaluru"] and loc.remote_scope.value == "india"
+
+
+# --- Unstop -------------------------------------------------------------------------------
+
+UNSTOP_URL = "https://unstop.com/api/public/opportunity/search-result"
+
+
+@respx.mock
+async def test_unstop_recorded_and_deduped_across_queries(http):
+    from jobbot.sources.unstop import UnstopSource
+
+    payload = fixture("unstop/python.json")
+    route = respx.get(UNSTOP_URL).mock(return_value=httpx.Response(200, json=payload))
+    result = await UnstopSource().fetch(target("unstop", "unstop"), http)
+    assert route.calls.last.request.url.params["opportunity"] == "jobs"
+    assert len(result.jobs) == len(payload["data"]["data"])  # same page for 4 queries, kept once
+    job = result.jobs[0]
+    assert job.source == "unstop" and job.url.startswith("https://unstop.com/")
+    assert job.company_name and job.company_name != "unstop"  # the real employer
+    assert job.posted_at is not None
+
+
+@respx.mock
+async def test_unstop_fields(http):
+    from jobbot.sources.unstop import UnstopSource
+
+    item = {
+        "id": 1,
+        "title": "Python Developer",
+        "status": "LIVE",
+        "seo_url": "https://unstop.com/jobs/python-developer-acme-1",
+        "organisation": {"name": "Acme Labs"},
+        "locations": [{"city": "Gurugram", "country": "India"}],
+        "jobDetail": {
+            "type": "hybrid",
+            "timing": "full_time",
+            "min_experience": 0,
+            "max_experience": 1,
+            "show_salary": 1,
+            "min_salary": 1200000,
+            "max_salary": 1600000,
+            "pay_in": "annually",
+        },
+        "filters": [{"type": "eligible", "name": "Fresher"}],
+        "required_skills": [{"skill_name": "Django"}, {"skill_name": "PostgreSQL"}],
+        "details": "<p>Build APIs</p>",
+        "approved_date": "2026-09-23 16:39:30 GMT+0530",
+    }
+    body = {"data": {"data": [item], "last_page": 1}}
+    respx.get(UNSTOP_URL).mock(return_value=httpx.Response(200, json=body))
+    (job,) = (await UnstopSource().fetch(target("unstop", "unstop", queries=["python"]), http)).jobs
+    n = normalize_job(job).normalized
+    assert job.company_name == "Acme Labs"
+    assert n.location.cities == ["gurugram"] and n.location.work_mode.value == "hybrid"
+    assert (n.experience.min_years, n.experience.max_years, n.experience.fresher) == (0, 1, True)
+    assert (n.salary.min, n.salary.max) == (12, 16)
+    assert {"django", "postgresql"} <= set(n.skills)
+    assert job.posted_at.isoformat() == "2026-09-23T16:39:30+05:30"

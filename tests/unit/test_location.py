@@ -126,3 +126,25 @@ def test_remote_scope_refined_from_description(description, scope):
 def test_description_never_overrides_explicit_location_scope():
     info = normalize_location("Remote - India", description="Must be located in the US.")
     assert info.remote_scope is RemoteScope.INDIA
+
+
+def test_norway_country_code_is_not_yaml_false():
+    # Regression: an unquoted `NO:` key in locations.yaml parsed as the boolean False.
+    info = normalize_location("Oslo, Norway")
+    assert info.countries == ["NO"]
+
+
+def test_all_vocabulary_keys_are_strings():
+    from jobbot.normalize.vocab import _load_yaml
+
+    for name in ("locations.yaml", "taxonomy.yaml"):
+        _load_yaml(name)  # raises on any non-string key
+
+
+def test_non_string_yaml_keys_are_rejected():
+    import pytest
+
+    from jobbot.normalize.vocab import _require_string_keys
+
+    with pytest.raises(ValueError, match="quote it"):
+        _require_string_keys({"countries": {False: ["norway"]}}, "locations.yaml")
