@@ -7,7 +7,7 @@ import respx
 
 from jobbot.cli import main
 from jobbot.settings import ConfigError
-from tests.conftest import FAKE_TOKEN
+from tests.conftest import FAKE_TOKEN, fake_mongo_uri
 
 BASE = f"https://api.telegram.org/bot{FAKE_TOKEN}"
 
@@ -93,7 +93,7 @@ def test_db_init_reports_mongo_errors_without_password(monkeypatch, capsys):
     from jobbot.storage import MongoRepository
     from jobbot.storage.mongo import connect
 
-    uri = "mongodb://jobbot:hunter2@127.0.0.1:1/"
+    uri = fake_mongo_uri("hunter2", "127.0.0.1:1", scheme="mongodb")
     monkeypatch.setenv("MONGODB_URI", uri)
     # Unreachable port + short timeout so the test fails fast.
     monkeypatch.setattr(
@@ -159,7 +159,7 @@ def test_scan_requires_mongo_and_telegram(capsys):
 
 
 def test_scan_no_send_only_requires_mongo(monkeypatch, capsys):
-    monkeypatch.setenv("MONGODB_URI", "mongodb://jobbot:pw@127.0.0.1:1/")
+    monkeypatch.setenv("MONGODB_URI", fake_mongo_uri("pw", "127.0.0.1:1", scheme="mongodb"))
     monkeypatch.setattr(
         "jobbot.cli.open_repository",
         lambda settings: (_ for _ in ()).throw(ConfigError("stop here")),

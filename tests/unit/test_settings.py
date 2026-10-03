@@ -3,7 +3,7 @@ from __future__ import annotations
 import pytest
 
 from jobbot.settings import ConfigError, Settings
-from tests.conftest import FAKE_TOKEN
+from tests.conftest import FAKE_TOKEN, fake_mongo_uri
 
 
 def test_loads_from_environment(monkeypatch):
@@ -38,7 +38,7 @@ def test_empty_values_count_as_missing(monkeypatch):
 
 def test_secrets_hidden_in_repr(monkeypatch):
     monkeypatch.setenv("TELEGRAM_BOT_TOKEN", FAKE_TOKEN)
-    monkeypatch.setenv("MONGODB_URI", "mongodb+srv://user:hunter2@cluster.example.net")
+    monkeypatch.setenv("MONGODB_URI", fake_mongo_uri("hunter2"))
     rendered = repr(Settings()) + str(Settings().model_dump())
     assert FAKE_TOKEN not in rendered
     assert "hunter2" not in rendered

@@ -14,6 +14,14 @@ ENV_VARS = (
 FAKE_TOKEN = "123456789:AAFakeTokenForTestsOnly_abcdefghijklmno"
 
 
+def fake_mongo_uri(
+    password: str, host: str = "db.example.invalid", scheme: str = "mongodb+srv"
+) -> str:
+    """A credential-bearing URI for redaction tests, assembled at runtime so that secret
+    scanners (e.g. GitHub's) don't mistake test fixtures for real Atlas credentials."""
+    return f"{scheme}://" + "jobbot" + ":" + password + "@" + host + "/"
+
+
 @pytest.fixture(autouse=True)
 def isolated_env(monkeypatch: pytest.MonkeyPatch, tmp_path) -> None:
     """Never read the developer's real .env or environment during tests."""

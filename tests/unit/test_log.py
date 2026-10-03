@@ -6,7 +6,7 @@ import logging
 import pytest
 
 from jobbot.log import JsonFormatter, redact, setup_logging
-from tests.conftest import FAKE_TOKEN
+from tests.conftest import FAKE_TOKEN, fake_mongo_uri
 
 
 @pytest.mark.parametrize(
@@ -14,7 +14,7 @@ from tests.conftest import FAKE_TOKEN
     [
         (f"POST https://api.telegram.org/bot{FAKE_TOKEN}/sendMessage", FAKE_TOKEN),
         (
-            "mongodb+srv://jobbot:s3cr3t-P4ss@cluster0.abc.mongodb.net/?retryWrites=true",
+            fake_mongo_uri("s3cr3t-P4ss", "cluster0.example.invalid") + "?retryWrites=true",
             "s3cr3t-P4ss",
         ),
         ("Authorization: Bearer gsk_abcdefghijklmnopqrstuvwxyz123456", "gsk_abcdefghijklmnop"),
