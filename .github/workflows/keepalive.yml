@@ -1,0 +1,24 @@
+name: Keepalive
+
+# GitHub disables scheduled workflows in repos with no activity for 60 days.
+# Re-enabling the scan workflow through the API twice a month keeps it running.
+on:
+  schedule:
+    - cron: "0 6 1,15 * *"
+  workflow_dispatch:
+
+permissions:
+  actions: write
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Keep the scan workflow enabled
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api -X PUT "repos/${{ github.repository }}/actions/workflows/scan.yml/enable"
+          gh api -X PUT "repos/${{ github.repository }}/actions/workflows/keepalive.yml/enable"
+          echo "Scheduled workflows enabled."

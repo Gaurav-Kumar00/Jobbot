@@ -1,0 +1,43 @@
+# Skills and concepts backed by the resume (source of truth: the resume PDF, which is
+# kept out of git). Used for the "profile overlap" part of the match score.
+# Only list what the resume supports — nothing invented.
+
+skills:
+  # languages
+  - python
+  - javascript
+  - cpp
+  - sql
+  - bash
+  # frameworks
+  - django
+  - drf
+  - fastapi
+  - flask
+  - celery
+  - rest_api
+  # data stores
+  - postgresql
+  - mysql
+  - mongodb
+  # messaging / pipelines
+  - kafka
+  - nifi
+  - message_queues
+  # cloud & tools
+  - aws
+  - gcp  # Google Vertex AI
+  - docker
+  - git
+  - ci_cd  # GitHub Actions
+  - linux
+  - observability  # Sentry
+  # concepts
+  - microservices
+  - distributed_systems
+  - event_driven
+  - system_design
+  - async_processing
+  - caching
+  - data_structures_algorithms
+  - llm  # LLM gateway work at TrueFoundry

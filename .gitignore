@@ -1,0 +1,29 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Personal documents (resume contains phone/email) — never commit
+*.pdf
+*.docx
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# Local data / scratch
+data/
+*.sqlite
+*.log
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+.vercel/

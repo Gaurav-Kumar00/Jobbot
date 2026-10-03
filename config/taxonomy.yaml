@@ -1,0 +1,93 @@
+# Skill vocabulary: canonical skill -> aliases found in job text.
+# Matching is case-insensitive with non-alphanumeric boundaries, so aliases
+# like "c++", "node.js" and "ci/cd" work. Avoid aliases that are common English
+# words ("rest", "go", "spring" alone) — they produce false positives.
+
+skills:
+  # --- languages ---
+  python: [python, python3, python 3]
+  java: [java]
+  golang: [golang, go lang, go-lang]
+  javascript: [javascript, js, ecmascript]
+  typescript: [typescript]
+  cpp: [c++, cpp]
+  csharp: [c#, .net, dotnet, asp.net]
+  ruby: [ruby, ruby on rails, rails]
+  php: [php, laravel]
+  kotlin: [kotlin]
+  scala: [scala]
+  rust: [rust]
+  sql: [sql]
+  bash: [bash, shell scripting]
+
+  # --- python web frameworks ---
+  django: [django]
+  drf: [django rest framework, drf, django-rest-framework]
+  fastapi: [fastapi, fast api]
+  flask: [flask]
+  celery: [celery]
+  asyncio: [asyncio, aiohttp]
+
+  # --- other backend frameworks ---
+  nodejs: [node.js, nodejs, node js, express.js, expressjs, nestjs]
+  spring: [spring boot, springboot, spring framework]
+
+  # --- data stores ---
+  postgresql: [postgresql, postgres, psql]
+  mysql: [mysql, mariadb]
+  mongodb: [mongodb, mongo]
+  redis: [redis]
+  elasticsearch: [elasticsearch, elastic search, opensearch]
+  cassandra: [cassandra]
+  dynamodb: [dynamodb]
+  nosql: [nosql, no-sql]
+
+  # --- messaging / streaming ---
+  kafka: [kafka, apache kafka]
+  rabbitmq: [rabbitmq, rabbit mq, amqp]
+  sqs: [sqs, sns]
+  nifi: [nifi, apache nifi]
+  message_queues: [message queue, message queues, message broker, message brokers, pub/sub, pubsub]
+
+  # --- cloud / infra ---
+  aws: [aws, amazon web services]
+  gcp: [gcp, google cloud]
+  azure: [azure]
+  docker: [docker, containerization, containers]
+  kubernetes: [kubernetes, k8s]
+  terraform: [terraform]
+  linux: [linux, unix]
+  git: [git, github, gitlab]
+  ci_cd: [ci/cd, cicd, ci cd, continuous integration, continuous delivery, continuous deployment, github actions, jenkins]
+
+  # --- APIs ---
+  rest_api: [rest api, rest apis, restful, rest-based, rest services, restful apis]
+  graphql: [graphql]
+  grpc: [grpc, protobuf, protocol buffers]
+
+  # --- frontend (signals for full-stack vs frontend) ---
+  react: [react, reactjs, react.js]
+  angular: [angular, angularjs]
+  vue: [vue, vuejs, vue.js]
+  html_css: [html, css, html5, css3, tailwind]
+
+  # --- mobile ---
+  android: [android]
+  ios: [ios, swift, swiftui]
+  flutter: [flutter, dart]
+  react_native: [react native]
+
+  # --- engineering concepts ---
+  microservices: [microservices, microservice, micro-services, service-oriented architecture, soa]
+  distributed_systems: [distributed systems, distributed system, distributed computing]
+  event_driven: [event-driven, event driven, event sourcing]
+  system_design: [system design, systems design, low level design, high level design, lld, hld]
+  async_processing: [asynchronous, async processing, background jobs, task queues, task queue]
+  scalability: [scalable, scalability, high availability, high-throughput, low latency, low-latency]
+  data_structures_algorithms: [data structures, algorithms, dsa]
+  observability: [observability, monitoring, sentry, prometheus, grafana, datadog]
+  caching: [caching, cache]
+
+  # --- AI / LLM ---
+  llm: [llm, llms, large language model, large language models, genai, generative ai, gen ai, rag, openai, langchain]
+  machine_learning: [machine learning, deep learning, pytorch, tensorflow, scikit-learn]

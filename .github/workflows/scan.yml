@@ -1,0 +1,46 @@
+name: Scan
+
+on:
+  schedule:
+    # Hourly at :17 (off the top of the hour, when GitHub's scheduler is busiest).
+    - cron: "17 * * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Scan every company now, ignoring per-source intervals"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+# Never run two scans at once; a late run waits instead of overlapping.
+concurrency:
+  group: scan
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Install
+        run: uv sync --locked --no-dev
+
+      - name: Scan
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          MONGODB_DB: ${{ secrets.MONGODB_DB }}
+          JOBBOT_ENV: production
+          # Logs of a public repo are public: keep them to warnings (no personal data).
+          LOG_LEVEL: WARNING
+        run: |
+          uv run jobbot scan --trigger "${{ github.event_name }}" ${{ inputs.force && '--force' || '' }}

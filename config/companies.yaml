@@ -1,0 +1,35 @@
+# Company registry: which companies to scan, on which ATS.
+#   key:     stable short id used in job ids (never change it once jobs exist)
+#   name:    display name in alerts
+#   ats:     source adapter (see src/jobbot/sources/)
+#   slug:    the ATS board token / company identifier
+#   enabled: set false to pause a company without deleting it
+#
+# Entries are verified against the live API before being added (Phase 9 grows this list).
+
+companies:
+  # --- Greenhouse (boards-api.greenhouse.io) ---
+  - key: razorpay
+    name: Razorpay
+    ats: greenhouse
+    slug: razorpaysoftwareprivatelimited
+
+  - key: groww
+    name: Groww
+    ats: greenhouse
+    slug: groww
+
+  # Verified 2026-10-03: live Greenhouse boards with India engineering roles
+  - {key: mongodb, name: MongoDB, ats: greenhouse, slug: mongodb}
+  - {key: databricks, name: Databricks, ats: greenhouse, slug: databricks}
+  - {key: okta, name: Okta, ats: greenhouse, slug: okta}
+  - {key: purestorage, name: Pure Storage, ats: greenhouse, slug: purestorage}
+  - {key: hackerrank, name: HackerRank, ats: greenhouse, slug: hackerrank}
+  - {key: rubrik, name: Rubrik, ats: greenhouse, slug: rubrik}
+  - {key: druva, name: Druva, ats: greenhouse, slug: druva}
+  - {key: gitlab, name: GitLab, ats: greenhouse, slug: gitlab}
+  - {key: toast, name: Toast, ats: greenhouse, slug: toast}
+  - {key: stripe, name: Stripe, ats: greenhouse, slug: stripe}
+  - {key: twilio, name: Twilio, ats: greenhouse, slug: twilio}
+  - {key: coinbase, name: Coinbase, ats: greenhouse, slug: coinbase}
+  - {key: samsara, name: Samsara, ats: greenhouse, slug: samsara}

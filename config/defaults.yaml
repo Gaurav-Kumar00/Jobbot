@@ -1,0 +1,48 @@
+# Default job preferences. Seeded into the database once (`jobbot prefs --seed`);
+# afterwards the live copy in MongoDB is edited through Telegram commands, and this
+# file is only the starting point. Every field is optional: missing fields use the
+# defaults in src/jobbot/matching/preferences.py.
+
+min_score: 55
+
+# --- role ---
+# Title phrases (matched after normalisation, e.g. "SDE-1" == "software engineer 1").
+primary_titles:
+  - backend engineer
+  - backend software engineer
+  - software engineer
+  - software development engineer
+  - sde 1
+  - software engineer 1
+  - junior backend engineer
+  - junior software engineer
+secondary_titles:
+  - associate software engineer
+  - backend developer
+  - software developer
+  - python developer
+excluded_categories: [frontend, mobile, qa, data_science, devops, security, ml_research,
+  embedded, management, non_software]
+excluded_seniority: [mid, senior, staff, principal, lead, manager]  # mid = SDE-II / Engineer II / Intermediate
+
+# --- experience ---
+max_min_years: 1.5  # exclude jobs requiring more years than this: "2+ yrs" out, "1-2 yrs" in
+
+# --- location ---
+locations: [bengaluru, ncr, hyderabad]  # cities or regions from config/locations.yaml
+allow_remote: true  # remote roles open to India (or worldwide)
+remote_bonus: 2
+allow_unknown_location: false  # location missing / unrecognised and no Indian city in the JD
+
+# --- compensation (LPA) ---
+target_base_lpa: 12
+floor_lpa: 10
+
+# --- job type ---
+allowed_employment: [full_time]
+
+# --- technology ---
+require_python: true  # exclude jobs whose stack is only other languages (Java/Go/...)
+primary_skills: [python, django, drf, fastapi]
+secondary_skills: [flask, rest_api, kafka, celery, nifi, mongodb, postgresql, mysql, aws, docker,
+  redis, microservices, event_driven, distributed_systems, async_processing, message_queues]
