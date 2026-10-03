@@ -114,6 +114,7 @@ class CompanyTarget(BaseModel):
     ats: str  # source name, e.g. "greenhouse"
     slug: str  # the ATS board token / company identifier
     enabled: bool = True
+    interval_minutes: int | None = None  # scan cadence; None -> 60 (Telegram can override)
     options: dict[str, Any] = Field(default_factory=dict)  # source-specific extras
 
 

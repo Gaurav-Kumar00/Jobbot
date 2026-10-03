@@ -107,7 +107,7 @@ async def run_scan(
     now = utcnow()
     report = ScanReport(started_at=now)
     states = {state.key: state for state in repo.list_source_states()}
-    due = [t for t in targets if force or is_due(states.get(_key(t)), now)]
+    due = [t for t in targets if force or is_due(states.get(_key(t)), now, t)]
     report.sources_due = len(due)
     outcomes = await collect(due, http)
 
@@ -157,10 +157,16 @@ async def run_scan(
     return report
 
 
-def is_due(state: SourceState | None, now: datetime) -> bool:
+def is_due(state: SourceState | None, now: datetime, target: CompanyTarget | None = None) -> bool:
+    """A per-source override (set from Telegram) beats companies.yaml, which beats 60 min."""
     if state is None or state.last_run_at is None:
         return True
-    interval = timedelta(minutes=state.interval_minutes or DEFAULT_INTERVAL_MINUTES)
+    minutes = (
+        state.interval_minutes
+        or (target.interval_minutes if target else None)
+        or DEFAULT_INTERVAL_MINUTES
+    )
+    interval = timedelta(minutes=minutes)
     return now - state.last_run_at >= interval - INTERVAL_GRACE
 
 

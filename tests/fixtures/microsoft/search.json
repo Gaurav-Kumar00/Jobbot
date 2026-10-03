@@ -1,0 +1,94 @@
+{
+ "status": 200,
+ "data": {
+  "positions": [
+   {
+    "id": 1970393556988747,
+    "displayJobId": "200053772",
+    "name": "Senior Software Engineer",
+    "locations": [
+     "India, Karnataka, Bangalore",
+     "India, Telangana, Hyderabad"
+    ],
+    "standardizedLocations": [
+     "Bengaluru, KA, IN",
+     "Hyderabad, TS, IN"
+    ],
+    "postedTs": 1790965800,
+    "solrScore": null,
+    "stars": 0,
+    "department": "Software Engineering",
+    "creationTs": 1788502454,
+    "isHot": 0,
+    "workLocationOption": "onsite",
+    "locationFlexibility": null,
+    "atsJobId": "200053772",
+    "positionUrl": "/careers/job/1970393556988747"
+   },
+   {
+    "id": 1970393556963032,
+    "displayJobId": "200049075",
+    "name": "Software Engineer - II",
+    "locations": [
+     "India, Telangana, Hyderabad"
+    ],
+    "standardizedLocations": [
+     "Hyderabad, TS, IN"
+    ],
+    "postedTs": 1790948455,
+    "solrScore": null,
+    "stars": 0,
+    "department": "Software Engineering",
+    "creationTs": 1786693432,
+    "isHot": 0,
+    "workLocationOption": "onsite",
+    "locationFlexibility": null,
+    "atsJobId": "200049075",
+    "positionUrl": "/careers/job/1970393556963032"
+   },
+   {
+    "id": 1970393556979403,
+    "displayJobId": "200050452",
+    "name": "Senior Software Engineer",
+    "locations": [
+     "India, Karnataka, Bangalore"
+    ],
+    "standardizedLocations": [
+     "Bengaluru, KA, IN"
+    ],
+    "postedTs": 1790861498,
+    "solrScore": null,
+    "stars": 0,
+    "department": "Software Engineering",
+    "creationTs": 1787551758,
+    "isHot": 0,
+    "workLocationOption": "onsite",
+    "locationFlexibility": null,
+    "atsJobId": "200050452",
+    "positionUrl": "/careers/job/1970393556979403"
+   },
+   {
+    "id": 1970393557022260,
+    "displayJobId": "200059264",
+    "name": "Software Engineer 2",
+    "locations": [
+     "India, Karnataka, Bangalore"
+    ],
+    "standardizedLocations": [
+     "Bengaluru, KA, IN"
+    ],
+    "postedTs": 1790858761,
+    "solrScore": null,
+    "stars": 0,
+    "department": "Software Engineering",
+    "creationTs": 1790850160,
+    "isHot": 0,
+    "workLocationOption": "onsite",
+    "locationFlexibility": null,
+    "atsJobId": "200059264",
+    "positionUrl": "/careers/job/1970393557022260"
+   }
+  ],
+  "count": 4
+ }
+}

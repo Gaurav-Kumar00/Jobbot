@@ -76,6 +76,7 @@ from jobbot.normalize.role import classify_employment, classify_role, classify_s
         ("Staff SRE for K8s Platform Team (AWS, Kubernetes)", "devops", "staff"),
         ("Software Engineer 3 - Enterprise Architecture", "software_generic", "senior"),
         ("Intermediate Backend Engineer, India", "backend", "mid"),
+        ("Developer Relations Engineer - Developer Advocate", "non_software", "unknown"),
         ("", "unknown", "unknown"),
     ],
 )
@@ -93,6 +94,7 @@ def test_role_and_seniority(title, category, seniority):
         ("Backend Developer - Contract", "", None, "contract"),
         ("Freelance Python Developer", "", None, "contract"),
         ("Part-time Backend Engineer", "", None, "part_time"),
+        ("SDE-1 (FTC)", "", None, "contract"),
         (
             "Backend Engineer",
             "This is a 6-month internship with a monthly stipend.",

@@ -139,3 +139,16 @@ def test_fetch_error_message_omits_query_string():
     err = FetchError("https://api.example.com/search?app_key=SECRET123&q=python", "HTTP 500", 500)
     assert "SECRET123" not in str(err)
     assert "api.example.com/search" in str(err)
+
+
+@respx.mock
+async def test_retry_after_zero_uses_backoff(http, sleep):
+    respx.get(URL).mock(
+        side_effect=[
+            httpx.Response(429, headers={"Retry-After": "0"}),
+            httpx.Response(429, headers={"Retry-After": "0"}),
+            httpx.Response(200, json={}),
+        ]
+    )
+    await http.get_json(URL)
+    assert sleep.calls == [1.0, 2.0]

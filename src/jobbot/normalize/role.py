@@ -22,7 +22,8 @@ _CATEGORY_RULES: list[tuple[str, re.Pattern[str]]] = [
         r"|procurement|admin\w*|receptionist|office manager|chief of staff|strategy|coordinator"
         r"|(?:technical )?support engineer|technical support|(?:technical|professional) services"
         r"|services engineer|customer engineer|implementation engineer|solutions engineer"
-        r"|sales engineer|field engineer)\b"
+        r"|sales engineer|field engineer|developer advocate|developer relations|devrel"
+        r"|developer evangelist)\b"
     )),
     ("management", re.compile(
         r"\b(engineering manager|manager,? engineering|em|director|head of|vp|vice president"
@@ -111,7 +112,7 @@ _EMPLOYMENT_RULES: list[tuple[str, re.Pattern[str]]] = [
     (
         "contract",
         re.compile(
-            r"\b(contract|contractual|contractor|freelance|freelancer|temporary|temp|fixed[\s-]term"
+            r"\b(contract|contractual|contractor|freelance|freelancer|temporary|temp|fixed[\s-]term|ftc"
             r"|consultant \(contract\))\b"
         ),
     ),

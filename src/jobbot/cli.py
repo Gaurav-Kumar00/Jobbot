@@ -24,6 +24,7 @@ from jobbot.normalize import NORMALIZER_VERSION, needs_renormalize, normalize_jo
 from jobbot.notify.base import OutgoingMessage
 from jobbot.notify.telegram import TelegramClient, TelegramError, TelegramNotifier
 from jobbot.pipeline.collect import collect
+from jobbot.pipeline.discover import discover, yaml_line
 from jobbot.pipeline.scan import ScanReport, realert, run_scan
 from jobbot.settings import ConfigError, Settings
 from jobbot.sources import SOURCES, get_source
@@ -411,6 +412,31 @@ async def cmd_realert(settings: Settings, args: argparse.Namespace) -> int:
     return 0
 
 
+def _configure_discover(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument("names", nargs="+", help='company names, e.g. "Sarvam AI" Zepto')
+    parser.add_argument("--slug", action="append", default=[], help="extra slug to try")
+
+
+async def cmd_discover(settings: Settings, args: argparse.Namespace) -> int:
+    """Probe public ATS boards for each company and print registry lines for hits."""
+    found_any = False
+    async with HttpClient(max_retries=1) as http:
+        for name in args.names:
+            hits = await discover(name, http, tuple(args.slug))
+            if not hits:
+                print(f"✗ {name}: no public board found (try --slug, or check its careers page)")
+                continue
+            found_any = True
+            print(f"✓ {name}:")
+            for hit in hits:
+                print(
+                    f"    {hit.ats:<15} {hit.slug:<28} total={hit.total:<4} india={hit.india:<4}"
+                    f" india_eng={hit.india_engineering}"
+                )
+            print(yaml_line(name, hits[0]))
+    return 0 if found_any else 1
+
+
 def _configure_explain(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("job_id", help="e.g. greenhouse:mongodb:1234567")
 
@@ -475,6 +501,7 @@ COMMANDS: dict[str, Command] = {
     "fetch": Command(cmd_fetch, "Fetch one company's jobs from one source", _configure_fetch),
     "scan": Command(cmd_scan, "Run one scan: fetch, store, score and alert", _configure_scan),
     "realert": Command(cmd_realert, "Re-send the alert for one job", _configure_realert),
+    "discover": Command(cmd_discover, "Find a company's public ATS board(s)", _configure_discover),
     "rank": Command(cmd_rank, "Score live jobs from all companies and rank them", _configure_rank),
     "explain": Command(cmd_explain, "Full score breakdown for one job", _configure_explain),
     "prefs": Command(cmd_prefs, "Show (or --seed) job preferences", _configure_prefs),

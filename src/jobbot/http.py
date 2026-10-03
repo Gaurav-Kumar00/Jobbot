@@ -105,7 +105,7 @@ class HttpClient:
         raise AssertionError("unreachable")  # pragma: no cover
 
     async def _wait(self, url: str, attempt: int, reason: str, retry_after: float | None) -> None:
-        if retry_after is not None:
+        if retry_after:  # "Retry-After: 0" (Workable sends it) means "use your own backoff"
             wait = min(retry_after, MAX_RETRY_AFTER_SECONDS)
         else:
             exp = min(self._backoff_cap, self._backoff_base * 2**attempt)

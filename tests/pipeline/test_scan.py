@@ -430,3 +430,23 @@ async def test_source_state_records_counts(source, repo, notifier):
     await scan(repo, notifier)
     state = repo.get_source_state("fake:acme")
     assert state.bootstrapped and state.last_counts == {"fetched": 2, "skipped": 0}
+
+
+async def test_registry_interval_applies(source, repo, notifier):
+    source.boards["acme"] = [posting("1")]
+    slow = target("acme").model_copy(update={"interval_minutes": 180})
+    async with HttpClient() as http:
+        common = dict(
+            repo=repo, http=http, notifier=notifier, targets=[slow],
+            prefs=default_preferences(), prefs_version=1, profile=load_profile(), sleep=no_sleep,
+        )  # fmt: skip
+        await run_scan(**common)
+        state = repo.get_source_state("fake:acme")
+        repo.save_source_state(
+            state.model_copy(update={"last_run_at": utcnow() - timedelta(hours=2)})
+        )
+        assert (await run_scan(**common)).sources_due == 0  # 2h < 3h
+        repo.save_source_state(
+            state.model_copy(update={"last_run_at": utcnow() - timedelta(hours=3)})
+        )
+        assert (await run_scan(**common)).sources_due == 1

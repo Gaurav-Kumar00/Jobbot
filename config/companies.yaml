@@ -33,3 +33,23 @@ companies:
   - {key: twilio, name: Twilio, ats: greenhouse, slug: twilio}
   - {key: coinbase, name: Coinbase, ats: greenhouse, slug: coinbase}
   - {key: samsara, name: Samsara, ats: greenhouse, slug: samsara}
+
+  # --- Lever (api.lever.co) — verified 2026-10-03 ---
+  - {key: cred, name: CRED, ats: lever, slug: cred}
+  - {key: meesho, name: Meesho, ats: lever, slug: meesho}
+  - {key: paytm, name: Paytm, ats: lever, slug: paytm}
+
+  # --- Ashby (api.ashbyhq.com) — verified 2026-10-03 ---
+  - {key: sarvam, name: Sarvam AI, ats: ashby, slug: sarvam}
+  - {key: atlan, name: Atlan, ats: ashby, slug: atlan}
+  - {key: composio, name: Composio, ats: ashby, slug: composio}
+
+  # --- Big-tech careers sites (India software roles) — verified 2026-10-03 ---
+  - {key: amazon, name: Amazon, ats: amazon, slug: amazon}
+  - key: microsoft
+    name: Microsoft
+    ats: microsoft
+    slug: microsoft
+    interval_minutes: 120  # ~15 paged requests per scan; every 2h is plenty
+    options: {queries: [software engineer, software developer]}
+  - {key: atlassian, name: Atlassian, ats: atlassian, slug: atlassian, interval_minutes: 360}
