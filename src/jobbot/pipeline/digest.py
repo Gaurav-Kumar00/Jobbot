@@ -56,7 +56,7 @@ def digest_messages(entries: list[tuple[Job, MatchResult]]) -> list[tuple[str, l
     chunks: list[tuple[str, list[str]]] = []
     text, ids = header, []
     for job, match in entries:
-        line = _line(job, match)
+        line = opening_line(job, match)
         if len(text) + len(line) > MAX_CHARS and ids:
             chunks.append((text, ids))
             text, ids = "", []
@@ -81,7 +81,7 @@ async def send_held_back(repo: Repository, notifier: Notifier) -> int:
     return sent
 
 
-def _line(job: Job, match: MatchResult) -> str:
+def opening_line(job: Job, match: MatchResult) -> str:
     n = job.normalized
     place = ", ".join(c.replace("_", " ").title() for c in n.location.cities[:2]) if n else ""
     if n and n.location.remote_scope.value in ("india", "global"):

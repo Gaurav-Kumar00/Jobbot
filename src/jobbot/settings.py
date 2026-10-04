@@ -27,6 +27,12 @@ class Settings(BaseSettings):
     adzuna_app_key: SecretStr | None = None
     serpapi_key: SecretStr | None = None
 
+    # Bot webhook / hourly tick (Phase 8)
+    telegram_webhook_secret: SecretStr | None = None  # Telegram echoes it in a header
+    cron_secret: SecretStr | None = None  # required by /api/tick
+    gh_dispatch_token: SecretStr | None = None  # fine-grained PAT: Actions read & write
+    github_repository: str = "Gaurav-Kumar00/Jobbot"
+
     jobbot_env: str = "dev"
     log_level: str = "INFO"
 

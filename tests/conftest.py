@@ -12,6 +12,10 @@ ENV_VARS = (
     "ADZUNA_APP_ID",
     "ADZUNA_APP_KEY",
     "SERPAPI_KEY",
+    "TELEGRAM_WEBHOOK_SECRET",
+    "CRON_SECRET",
+    "GH_DISPATCH_TOKEN",
+    "GITHUB_REPOSITORY",
 )
 
 FAKE_TOKEN = "123456789:AAFakeTokenForTestsOnly_abcdefghijklmno"

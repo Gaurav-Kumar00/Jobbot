@@ -1,0 +1,5 @@
+tests/
+.github/
+*.pdf
+.env
+.env.*

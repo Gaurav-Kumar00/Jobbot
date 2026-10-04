@@ -459,6 +459,55 @@ async def cmd_backlog(settings: Settings, args: argparse.Namespace) -> int:
     return 0
 
 
+BOT_MENU = [
+    ("status", "Health, last scan, today's alerts"),
+    ("latest", "Last N alerts"),
+    ("today", "Alerts sent today"),
+    ("prefs", "Show preferences"),
+    ("scan_now", "Run a full scan now"),
+    ("pause", "Hold alerts"),
+    ("resume", "Resume alerts"),
+    ("help", "All commands"),
+]
+
+
+def _configure_set_webhook(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument("base_url", help="your Vercel URL, e.g. https://jobbot-xyz.vercel.app")
+
+
+async def cmd_set_webhook(settings: Settings, args: argparse.Namespace) -> int:
+    """Point Telegram at the Vercel webhook and install the bot's command menu."""
+    settings.require("telegram_bot_token", "telegram_webhook_secret")
+    url = args.base_url.rstrip("/") + "/api/telegram"
+    async with TelegramClient(settings.secret("telegram_bot_token")) as client:
+        await client.call(
+            "setWebhook",
+            {
+                "url": url,
+                "secret_token": settings.secret("telegram_webhook_secret"),
+                "allowed_updates": ["message"],
+                "drop_pending_updates": True,
+            },
+        )
+        await client.call(
+            "setMyCommands",
+            {"commands": [{"command": c, "description": d} for c, d in BOT_MENU]},
+        )
+        info = await client.call("getWebhookInfo")
+    print(f"Webhook set to {info.get('url')} (pending updates: {info.get('pending_update_count')})")
+    return 0
+
+
+async def cmd_webhook_info(settings: Settings, args: argparse.Namespace) -> int:
+    """Show Telegram's view of the webhook (URL, last error)."""
+    settings.require("telegram_bot_token")
+    async with TelegramClient(settings.secret("telegram_bot_token")) as client:
+        info = await client.call("getWebhookInfo")
+    for key in ("url", "pending_update_count", "last_error_date", "last_error_message"):
+        print(f"{key}: {info.get(key)}")
+    return 0
+
+
 def _configure_explain(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("job_id", help="e.g. greenhouse:mongodb:1234567")
 
@@ -525,6 +574,10 @@ COMMANDS: dict[str, Command] = {
     "realert": Command(cmd_realert, "Re-send the alert for one job", _configure_realert),
     "discover": Command(cmd_discover, "Find a company's public ATS board(s)", _configure_discover),
     "backlog": Command(cmd_backlog, "List or --send held-back matches", _configure_backlog),
+    "set-webhook": Command(
+        cmd_set_webhook, "Point Telegram at the Vercel webhook", _configure_set_webhook
+    ),
+    "webhook-info": Command(cmd_webhook_info, "Show Telegram webhook status"),
     "rank": Command(cmd_rank, "Score live jobs from all companies and rank them", _configure_rank),
     "explain": Command(cmd_explain, "Full score breakdown for one job", _configure_explain),
     "prefs": Command(cmd_prefs, "Show (or --seed) job preferences", _configure_prefs),
