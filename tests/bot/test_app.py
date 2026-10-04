@@ -13,7 +13,7 @@ from jobbot.notify.base import OutgoingMessage
 from jobbot.storage import MemoryRepository
 from tests.conftest import FAKE_TOKEN
 
-OWNER = "2019289414"
+OWNER = "111222333"  # fake chat id
 
 
 class FakeTelegram:
