@@ -1,0 +1,155 @@
+{
+ "count": 5,
+ "results": [
+  {
+   "created": "2026-10-04T11:54:03Z",
+   "category": {
+    "tag": "it-jobs",
+    "__CLASS__": "Adzuna::API::Response::Category",
+    "label": "IT Jobs"
+   },
+   "redirect_url": "https://www.adzuna.in/details/5911188252?utm_medium=api&utm_source=eca32fc6",
+   "title": "Engineer III, Software",
+   "salary_is_predicted": "0",
+   "adref": "eyJhbGciOiJIUzI1NiJ9.eyJzIjoiWmtCdjhjZV84UkdUeXZUSDVxUlE3QSIsImkiOiI1OTExMTg4MjUyIn0.QbzYVoPIiJziqe3vTzLa3mc3DvxtIFfJzbwKO3IFhsU",
+   "longitude": 77.59837,
+   "id": "5911188252",
+   "company": {
+    "display_name": "ThermoFisher Scientific",
+    "__CLASS__": "Adzuna::API::Response::Company"
+   },
+   "location": {
+    "display_name": "Bangalore, Karnataka",
+    "__CLASS__": "Adzuna::API::Response::Location",
+    "area": [
+     "India",
+     "Karnataka",
+     "Bangalore"
+    ]
+   },
+   "latitude": 12.95703,
+   "description": "Work Schedule Standard (Mon-Fri) Environmental Conditions Office Job Description Python & Java Engineer Role overview We are looking for an experienced Software Engineer with strong expertise in Python and Java to design, develop, and maintain scalable, high-quality software applications and backend services. The ideal candidate will bring strong technical and problem-solving skills, take ownership of complex engineering challenges, and collaborate effectively across cross-functional teams. Thi…",
+   "__CLASS__": "Adzuna::API::Response::Job"
+  },
+  {
+   "salary_is_predicted": "0",
+   "adref": "eyJhbGciOiJIUzI1NiJ9.eyJpIjoiNTkxMTE4ODExMCIsInMiOiJaa0J2OGNlXzhSR1R5dlRINXFSUTdBIn0.H46033l0DSQW_X2fdCqqScJN9Myt7PaUCulxyZ619Zk",
+   "longitude": 77.59837,
+   "created": "2026-10-04T11:53:41Z",
+   "category": {
+    "__CLASS__": "Adzuna::API::Response::Category",
+    "label": "IT Jobs",
+    "tag": "it-jobs"
+   },
+   "redirect_url": "https://www.adzuna.in/details/5911188110?utm_medium=api&utm_source=eca32fc6",
+   "title": "Software Architect",
+   "latitude": 12.95703,
+   "description": "Who we want: Software Architect - Surgical Planning Platform We are seeking an experienced Software Architect to contribute to the architecture and technical strategy of next-generation clinical and surgical software products spanning the pre-operative, intra-operative, and post-operative ecosystem. The Software Architect will collaborate closely with Technical Leads, Principal Engineers, and Chief Architects to shape and evolve the technical vision across a portfolio of desktop applications, c…",
+   "__CLASS__": "Adzuna::API::Response::Job",
+   "id": "5911188110",
+   "company": {
+    "__CLASS__": "Adzuna::API::Response::Company",
+    "display_name": "Stryker"
+   },
+   "location": {
+    "display_name": "Bangalore, Karnataka",
+    "__CLASS__": "Adzuna::API::Response::Location",
+    "area": [
+     "India",
+     "Karnataka",
+     "Bangalore"
+    ]
+   }
+  },
+  {
+   "title": "Data Analyst/Developer (VBA, Power Query, Power BI, Python)",
+   "redirect_url": "https://www.adzuna.in/details/5911187891?utm_medium=api&utm_source=eca32fc6",
+   "created": "2026-10-04T11:53:02Z",
+   "category": {
+    "__CLASS__": "Adzuna::API::Response::Category",
+    "label": "IT Jobs",
+    "tag": "it-jobs"
+   },
+   "longitude": 78.50806,
+   "adref": "eyJhbGciOiJIUzI1NiJ9.eyJzIjoiWmtCdjhjZV84UkdUeXZUSDVxUlE3QSIsImkiOiI1OTExMTg3ODkxIn0.F3tEE8u8bxv99M57JmKVI70JzfTBI6tWQbYUa2tQhfs",
+   "salary_is_predicted": "0",
+   "location": {
+    "area": [
+     "India",
+     "Telangana",
+     "Hyderabad"
+    ],
+    "display_name": "Hyderabad, Telangana",
+    "__CLASS__": "Adzuna::API::Response::Location"
+   },
+   "company": {
+    "display_name": "Qnity",
+    "__CLASS__": "Adzuna::API::Response::Company"
+   },
+   "id": "5911187891",
+   "__CLASS__": "Adzuna::API::Response::Job",
+   "description": "Are you looking to power the next leap in the exciting world of advanced electronics? Do you want to help solve problems that drive success in the rapidly evolving technology and connectivity landscape? Then bring your problem-solving, passion, and creativity to help us power the next leap in electronics. At Qnity , we're more than a global leader in materials and solutions for advanced electronics and high-tech industries - we're a tight-knit team that is motivated by new possibilities, and al…",
+   "latitude": 17.40275
+  },
+  {
+   "adref": "eyJhbGciOiJIUzI1NiJ9.eyJzIjoiWmtCdjhjZV84UkdUeXZUSDVxUlE3QSIsImkiOiI1OTExMTg3Nzc4In0.UPxHZlBh7s0who8f0-MqQVdXu9FAKw_wrRKKaaSqyKE",
+   "salary_is_predicted": "0",
+   "longitude": 77.59837,
+   "redirect_url": "https://www.adzuna.in/details/5911187778?utm_medium=api&utm_source=eca32fc6",
+   "title": "Data Engineer II",
+   "category": {
+    "label": "IT Jobs",
+    "__CLASS__": "Adzuna::API::Response::Category",
+    "tag": "it-jobs"
+   },
+   "created": "2026-10-04T11:52:44Z",
+   "latitude": 12.95703,
+   "__CLASS__": "Adzuna::API::Response::Job",
+   "description": "Overview Security represents the most critical priorities for our customers in a world awash in digital threats, regulatory scrutiny, and estate complexity. Microsoft Security aspires to make the world a safer place for all. We want to reshape security and empower every user, customer, and developer with a security cloud that protects them with end to end, simplified solutions. The Microsoft Security organization accelerates Microsoft's mission and bold ambitions to ensure that our company and …",
+   "id": "5911187778",
+   "company": {
+    "__CLASS__": "Adzuna::API::Response::Company",
+    "display_name": "Microsoft Corporation"
+   },
+   "location": {
+    "display_name": "Bangalore, Karnataka",
+    "__CLASS__": "Adzuna::API::Response::Location",
+    "area": [
+     "India",
+     "Karnataka",
+     "Bangalore"
+    ]
+   }
+  },
+  {
+   "redirect_url": "https://www.adzuna.in/details/5911187279?utm_medium=api&utm_source=eca32fc6",
+   "title": "Python Fullstack Developer",
+   "created": "2026-10-04T11:51:44Z",
+   "category": {
+    "tag": "it-jobs",
+    "__CLASS__": "Adzuna::API::Response::Category",
+    "label": "IT Jobs"
+   },
+   "adref": "eyJhbGciOiJIUzI1NiJ9.eyJzIjoiWmtCdjhjZV84UkdUeXZUSDVxUlE3QSIsImkiOiI1OTExMTg3Mjc5In0.-YSx81g-beE3UugoCTxcKeFM_UfI4G5Qw6Ex0ZdeTe8",
+   "salary_is_predicted": "0",
+   "longitude": 78.50806,
+   "id": "5911187279",
+   "company": {
+    "display_name": "Cognizant",
+    "__CLASS__": "Adzuna::API::Response::Company"
+   },
+   "location": {
+    "display_name": "Hyderabad, Telangana",
+    "__CLASS__": "Adzuna::API::Response::Location",
+    "area": [
+     "India",
+     "Telangana",
+     "Hyderabad"
+    ]
+   },
+   "latitude": 17.40275,
+   "__CLASS__": "Adzuna::API::Response::Job",
+   "description": "Job Summary Serve as a senior business analyst driving complex business transformation initiatives within a global organization translating strategic goals into actionable requirements while collaborating closely with cross functional teams. Utilize strong English speaking skills to facilitate clear communication workshops and stakeholder alignment in a work from office day shift environment. Responsibilities  Lead comprehensive discovery sessions with business stakeholders to understand transf…"
+  }
+ ]
+}

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from jobbot.sources.adzuna import AdzunaSource
 from jobbot.sources.amazon import AmazonSource
 from jobbot.sources.ashby import AshbySource
 from jobbot.sources.atlassian import AtlassianSource
@@ -10,6 +11,7 @@ from jobbot.sources.greenhouse import GreenhouseSource
 from jobbot.sources.keka import KekaSource
 from jobbot.sources.lever import LeverSource
 from jobbot.sources.microsoft import MicrosoftSource
+from jobbot.sources.serpapi import SerpApiGoogleJobsSource
 from jobbot.sources.smartrecruiters import SmartRecruitersSource
 from jobbot.sources.unstop import UnstopSource
 from jobbot.sources.workable import WorkableSource
@@ -27,6 +29,8 @@ SOURCES: dict[str, Source] = {
         MicrosoftSource(),
         AtlassianSource(),
         UnstopSource(),
+        AdzunaSource(),
+        SerpApiGoogleJobsSource(),
     )
 }
 

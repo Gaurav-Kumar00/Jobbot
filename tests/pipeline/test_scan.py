@@ -383,7 +383,7 @@ async def test_custom_interval_is_respected(source, repo, notifier):
     assert (await scan(repo, notifier, force=False)).sources_due == 0
 
 
-async def test_first_scan_only_alerts_last_48_hours(source, repo, notifier):
+async def test_first_scan_alerts_recent_posts_and_digests_older_ones(source, repo, notifier):
     old = utcnow() - timedelta(days=5)
     source.boards["acme"] = [
         posting("new", title="Backend Engineer"),
@@ -391,12 +391,29 @@ async def test_first_scan_only_alerts_last_48_hours(source, repo, notifier):
         posting("undated", title="SDE 1", posted=None),
     ]
     report = await scan(repo, notifier)
-    assert report.alerts_sent == 1
-    assert report.baseline == 2
-    assert repo.get_alert("fake:acme:old").status is AlertStatus.BASELINE
-    # once bootstrapped, a brand-new posting without a date is alerted normally
+    assert report.alerts_sent == 1  # the recent one: a full alert
+    assert report.baseline == 2 and report.digested == 2  # older ones: one digest message
+    assert len(notifier.sent) == 2
+    digest = notifier.sent[1].text
+    assert "2 more matching roles, still open" in digest
+    assert "Software Engineer" in digest and "SDE 1" in digest
+    assert repo.get_alert("fake:acme:old").status is AlertStatus.SENT
+    # nothing is ever repeated
+    assert (await scan(repo, notifier)).digested == 0
+    assert len(notifier.sent) == 2
+    # once bootstrapped, a brand-new posting without a date is a normal full alert
     source.boards["acme"].append(posting("later", title="Python Developer", posted=None))
-    assert (await scan(repo, notifier)).alerts_sent == 1
+    later = await scan(repo, notifier)
+    assert later.alerts_sent == 1 and later.digested == 0
+
+
+async def test_paused_holds_the_digest_too(source, repo, notifier):
+    source.boards["acme"] = [posting("old", posted=utcnow() - timedelta(days=9))]
+    paused = default_preferences().model_copy(update={"paused": True})
+    held = await scan(repo, notifier, prefs=paused)
+    assert held.baseline == 1 and held.digested == 0 and notifier.sent == []
+    resumed = await scan(repo, notifier)
+    assert resumed.digested == 1
 
 
 async def test_a_newly_added_company_gets_its_own_backfill(source, repo, notifier):
@@ -404,7 +421,7 @@ async def test_a_newly_added_company_gets_its_own_backfill(source, repo, notifie
     await scan(repo, notifier)
     source.boards["globex"] = [posting("9", posted=utcnow() - timedelta(days=10))]
     report = await scan(repo, notifier, slugs=("acme", "globex"))
-    assert report.baseline == 1 and report.alerts_sent == 0
+    assert report.baseline == 1 and report.alerts_sent == 0 and report.digested == 1
 
 
 async def test_repeated_failures_warn_once_then_report_recovery(source, repo, notifier):

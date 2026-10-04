@@ -24,6 +24,7 @@ from jobbot.normalize import NORMALIZER_VERSION, needs_renormalize, normalize_jo
 from jobbot.notify.base import OutgoingMessage
 from jobbot.notify.telegram import TelegramClient, TelegramError, TelegramNotifier
 from jobbot.pipeline.collect import collect
+from jobbot.pipeline.digest import held_back, send_held_back
 from jobbot.pipeline.discover import discover, yaml_line
 from jobbot.pipeline.scan import ScanReport, realert, run_scan
 from jobbot.settings import ConfigError, Settings
@@ -384,7 +385,7 @@ def describe_report(report: ScanReport, prefs_version: int) -> str:
         f" {report.duplicates} duplicate openings collapsed",
         f"  alerts: {report.alerts_sent} sent, {report.alerts_failed} failed (will retry),"
         f" {report.alerts_uncertain} uncertain (not resent), {report.held_paused} held,"
-        f" {report.baseline} older than 48h on first scan (not sent)",
+        f" {report.baseline} older than 48h on first scan, {report.digested} sent as digest",
         f"  storage: {report.storage_pct:g}% used, {report.compacted} compacted,"
         f" {report.deleted} deleted",
     ]
@@ -435,6 +436,27 @@ async def cmd_discover(settings: Settings, args: argparse.Namespace) -> int:
                 )
             print(yaml_line(name, hits[0]))
     return 0 if found_any else 1
+
+
+def _configure_backlog(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument("--send", action="store_true", help="send the digest to Telegram now")
+
+
+async def cmd_backlog(settings: Settings, args: argparse.Namespace) -> int:
+    """List (or --send) held-back matches: open roles posted before a company was watched."""
+    settings.require("mongodb_uri")
+    repo = open_repository(settings)
+    if not args.send:
+        entries = held_back(repo)
+        print(f"{len(entries)} held-back openings (unique):")
+        for job, match in entries:
+            print(f"  {one_line(job, match)}")
+        return 0
+    settings.require("telegram_bot_token", "telegram_chat_id")
+    async with TelegramClient(settings.secret("telegram_bot_token")) as tg:
+        sent = await send_held_back(repo, TelegramNotifier(tg, settings.telegram_chat_id))
+    print(f"Sent digest covering {sent} openings.")
+    return 0
 
 
 def _configure_explain(parser: argparse.ArgumentParser) -> None:
@@ -502,6 +524,7 @@ COMMANDS: dict[str, Command] = {
     "scan": Command(cmd_scan, "Run one scan: fetch, store, score and alert", _configure_scan),
     "realert": Command(cmd_realert, "Re-send the alert for one job", _configure_realert),
     "discover": Command(cmd_discover, "Find a company's public ATS board(s)", _configure_discover),
+    "backlog": Command(cmd_backlog, "List or --send held-back matches", _configure_backlog),
     "rank": Command(cmd_rank, "Score live jobs from all companies and rank them", _configure_rank),
     "explain": Command(cmd_explain, "Full score breakdown for one job", _configure_explain),
     "prefs": Command(cmd_prefs, "Show (or --seed) job preferences", _configure_prefs),

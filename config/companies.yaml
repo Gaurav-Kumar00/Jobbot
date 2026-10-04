@@ -223,3 +223,25 @@ companies:
     slug: unstop
     interval_minutes: 120
     options: {queries: [python, backend developer, django, software engineer], max_pages: 2}
+
+  # --- Aggregators (need keys in GitHub Secrets; without them they report "not configured") ---
+  # Adzuna free tier: 250 calls/day, 2500/month. 4 queries every 2h = at most 48/day.
+  - key: adzuna
+    name: Adzuna
+    ats: adzuna
+    slug: adzuna
+    interval_minutes: 120
+    options: {queries: [python developer, backend developer, django developer, software engineer]}
+  # SerpApi free tier: 250 searches/month. 2 searches every 6h = 8/day, about 240/month.
+  - key: googlejobs
+    name: Google Jobs
+    ats: serpapi
+    slug: googlejobs
+    interval_minutes: 360
+    options:
+      per_run: 2
+      searches:
+        - {q: python backend developer, location: "Bengaluru, Karnataka, India"}
+        - {q: python django developer fresher, location: India}
+        - {q: python developer, location: "Gurugram, Haryana, India"}
+        - {q: backend software engineer python, location: "Hyderabad, Telangana, India"}

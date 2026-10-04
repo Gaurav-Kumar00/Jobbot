@@ -24,7 +24,8 @@ SOURCE_LABELS = {
     "workable": "Workable",
     "keka": "Keka",
     "unstop": "Unstop",
-    "adzuna": "Adzuna",
+    "adzuna": "Jobs by Adzuna",
+    "serpapi": "Google Jobs",
     "hn": "HN Who's Hiring",
 }
 MODE_LABELS = {

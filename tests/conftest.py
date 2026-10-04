@@ -9,6 +9,9 @@ ENV_VARS = (
     "MONGODB_DB",
     "JOBBOT_ENV",
     "LOG_LEVEL",
+    "ADZUNA_APP_ID",
+    "ADZUNA_APP_KEY",
+    "SERPAPI_KEY",
 )
 
 FAKE_TOKEN = "123456789:AAFakeTokenForTestsOnly_abcdefghijklmno"

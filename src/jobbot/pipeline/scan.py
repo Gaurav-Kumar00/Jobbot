@@ -33,6 +33,7 @@ from jobbot.notify.base import Notifier, OutgoingMessage
 from jobbot.notify.formatter import format_alert
 from jobbot.notify.telegram import TelegramError
 from jobbot.pipeline.collect import TargetOutcome, collect
+from jobbot.pipeline.digest import send_held_back
 from jobbot.pipeline.housekeeping import housekeeping
 from jobbot.storage.base import Repository
 from jobbot.timeutil import utcnow
@@ -68,6 +69,7 @@ class ScanReport:
     alerts_uncertain: int = 0
     held_paused: int = 0
     baseline: int = 0
+    digested: int = 0
     compacted: int = 0
     deleted: int = 0
     storage_pct: float = 0.0
@@ -144,6 +146,11 @@ async def run_scan(
         if fresh.get(job_id) is not None and fresh[job_id].decision == "match":
             report.baseline += repo.suppress_alert(job_id, by_id[job_id].fingerprint)
     await deliver_pending(repo, notifier, prefs, report, trigger=AlertTrigger.NEW, sleep=sleep)
+    if notifier is not None and not prefs.paused:
+        try:
+            report.digested = await send_held_back(repo, notifier)
+        except TelegramError as exc:  # retried next run; the digest is not urgent
+            log.warning("digest failed", extra={"error": str(exc)})
     await _update_source_health(repo, notifier, outcomes, states, now)
 
     upkeep = await housekeeping(repo, notifier, now=now)

@@ -22,6 +22,11 @@ class Settings(BaseSettings):
     mongodb_uri: SecretStr | None = None
     mongodb_db: str = "jobbot"
 
+    # Optional aggregator keys (Phase 9). Missing keys only disable that source.
+    adzuna_app_id: str | None = None
+    adzuna_app_key: SecretStr | None = None
+    serpapi_key: SecretStr | None = None
+
     jobbot_env: str = "dev"
     log_level: str = "INFO"
 
