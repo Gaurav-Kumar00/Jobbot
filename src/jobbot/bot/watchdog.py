@@ -1,7 +1,7 @@
 """Hourly tick (called by an external free cron, e.g. cron-job.org, via /api/tick).
 
 1. Reliable cadence: GitHub's scheduler skips runs on busy days. If no scan has started
-   in the last 50 minutes, start one (per-source intervals still apply).
+   in the last 50 minutes and none is queued/running, start one (intervals still apply).
 2. Dead-man's switch: if no scan has *succeeded* for 3 hours, warn on Telegram once,
    and say when scanning recovers.
 """
@@ -28,12 +28,16 @@ async def tick(
     notifier: Notifier,
     dispatch: Callable[[bool], Awaitable[str]],
     now: datetime,
+    in_flight: Callable[[], Awaitable[bool]] | None = None,
 ) -> dict[str, Any]:
     runs = repo.latest_runs(20)
     last_start = runs[0].started_at if runs else None
     result: dict[str, Any] = {"dispatched": False}
 
-    if last_start is None or now - last_start >= RESCAN_AFTER:
+    overdue = last_start is None or now - last_start >= RESCAN_AFTER
+    if overdue and in_flight is not None and await in_flight():
+        result["in_flight"] = True  # a scan is queued/running; don't stack another
+    elif overdue:
         try:
             await dispatch(False)
             result["dispatched"] = True

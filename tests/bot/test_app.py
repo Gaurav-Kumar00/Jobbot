@@ -50,6 +50,11 @@ def client(monkeypatch):
         return "https://github.com/x/y/actions"
 
     monkeypatch.setattr(app_module, "dispatch_scan", fake_dispatch)
+
+    async def nothing_running(settings):
+        return False
+
+    monkeypatch.setattr(app_module, "scan_in_flight", nothing_running)
     FakeTelegram.sent = []
     test_client = TestClient(app_module.app)
     test_client.repo = repo  # type: ignore[attr-defined]

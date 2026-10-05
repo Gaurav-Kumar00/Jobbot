@@ -2,7 +2,7 @@
 
 A personal job-discovery bot. It looks for newly posted backend/SWE jobs, scores them against my resume and preferences, removes duplicates, and sends each relevant job to Telegram once. It runs on free infrastructure: GitHub Actions for scanning, MongoDB Atlas M0 for storage, and Vercel for bot commands.
 
-> Status: **Phase 6 — Telegram alerts** (scan pipeline, one alert per opening, restart-safe).
+> Status: **Phase 8 — Telegram commands live** (181 sources, hourly scans, Vercel bot, watchdog).
 
 ## Quick start
 
@@ -43,7 +43,35 @@ uv run jobbot ping    # sends a test message to your Telegram
 | `jobbot scan [--no-send] [--company K]` | One full scan: fetch, store, score, alert (`--no-send` keeps alerts pending) |
 | `jobbot rank [--top N --bottom N --near N --details]` | Live-score every registered company and show the ranking |
 | `jobbot explain <job_id>` | Full score breakdown for one job |
+| `jobbot backlog [--send]` | List or send held-back matches as a digest |
+| `jobbot discover <name>` | Find a company's public ATS board |
+| `jobbot set-webhook <url>`, `jobbot webhook-info` | Telegram webhook setup and status |
 | `jobbot prefs [--seed]` | Show active preferences (or store `config/defaults.yaml` in the DB) |
+
+## Telegram commands (Vercel)
+
+The bot answers only `TELEGRAM_CHAT_ID`. Every webhook request must carry Telegram's secret header (`TELEGRAM_WEBHOOK_SECRET`).
+
+| Command | What it does |
+|---|---|
+| `/status`, `/sources` | Health, last scan, failing sources |
+| `/latest [n]`, `/today`, `/history [days]` | Recent alerts |
+| `/job <id>`, `/realert <id>` | Score breakdown; send an alert again |
+| `/pause`, `/resume` | Hold or release alerts (scanning continues) |
+| `/scan_now` (`/rematch`) | Full scan now with current preferences |
+| `/prefs` | Show preferences |
+| `/set_salary`, `/set_exp`, `/set_min_score`, `/set_remote` | Edit preferences |
+| `/location`, `/skill`, `/role` | Add or remove cities, skills, preferred titles |
+| `/set_interval` | Change one source's scan cadence |
+
+Preference edits are versioned, and the next scan re-scores stored jobs without re-scraping.
+
+### Deploy
+
+1. Import the repo into Vercel and set these env vars: `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `MONGODB_URI`, `MONGODB_DB`, `TELEGRAM_WEBHOOK_SECRET`, `CRON_SECRET`, `GH_DISPATCH_TOKEN`, `GITHUB_REPOSITORY`.
+2. Run `uv run jobbot set-webhook https://<your-app>.vercel.app`.
+3. On cron-job.org, call `GET https://<your-app>.vercel.app/api/tick` every 15–60 minutes with header `X-Cron-Secret: <CRON_SECRET>`. It starts a scan when GitHub's scheduler skipped one (and none is running). It also warns on Telegram once if no scan has succeeded for 3 hours.
+4. `GH_DISPATCH_TOKEN` is a fine-grained token for this repo only, with **Actions: Read and write**.
 
 ## Matching
 

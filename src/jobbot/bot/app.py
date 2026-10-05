@@ -10,7 +10,7 @@ from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
 from jobbot.bot.commands import BotContext, handle
-from jobbot.bot.github import dispatch_scan
+from jobbot.bot.github import dispatch_scan, scan_in_flight
 from jobbot.bot.watchdog import tick
 from jobbot.log import setup_logging
 from jobbot.matching.preferences import load_profile
@@ -97,5 +97,8 @@ async def hourly_tick(request: Request, key: str | None = None) -> JSONResponse:
         async def dispatch(force: bool) -> str:
             return await dispatch_scan(settings, force=force, trigger="tick")
 
-        result = await tick(get_repo(settings), notifier, dispatch, utcnow())
+        async def in_flight() -> bool:
+            return await scan_in_flight(settings)
+
+        result = await tick(get_repo(settings), notifier, dispatch, utcnow(), in_flight=in_flight)
     return JSONResponse({"ok": True, **result})

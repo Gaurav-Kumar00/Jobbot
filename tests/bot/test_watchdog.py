@@ -79,3 +79,25 @@ async def test_dispatch_failure_is_reported_not_raised():
 
     result = await tick(repo, notifier, broken, NOW)
     assert result["dispatch_error"] == "GitHub down" and result["stale"]
+
+
+async def test_no_second_dispatch_while_a_scan_is_queued_or_running():
+    repo, notifier, calls = MemoryRepository(), Recorder(), []
+    run(repo, 75)
+
+    async def busy() -> bool:
+        return True
+
+    result = await tick(repo, notifier, await dispatcher(calls), NOW, in_flight=busy)
+    assert result["in_flight"] is True and result["dispatched"] is False and calls == []
+
+
+async def test_idle_github_allows_dispatch():
+    repo, notifier, calls = MemoryRepository(), Recorder(), []
+    run(repo, 75)
+
+    async def idle() -> bool:
+        return False
+
+    result = await tick(repo, notifier, await dispatcher(calls), NOW, in_flight=idle)
+    assert result["dispatched"] is True and calls == [False]
