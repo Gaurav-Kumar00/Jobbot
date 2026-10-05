@@ -27,3 +27,6 @@ data/
 .vscode/
 .DS_Store
 .vercel/
+
+# Personal operations notes (instance URLs, account names, security notes) — local only
+docs/private/

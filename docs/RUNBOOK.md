@@ -2,15 +2,17 @@
 
 How to operate JobBot: daily checks, incidents, key rotation and limits. For how the code works, see [`DEVELOPER_GUIDE.md`](DEVELOPER_GUIDE.md).
 
+> **Your instance details** (bot name, URLs, account names, token expiry dates and security notes) live in **`docs/private/MY_SETUP.md`**. That file is kept only on your machine and is git-ignored. Values written `<LIKE_THIS>` below are filled in there.
+
 ## Where everything lives
 
 | What | Where |
 |---|---|
-| Code & scheduled scans | https://github.com/Gaurav-Kumar00/Jobbot (Actions tab → **Scan**) |
-| Telegram bot | @Qeiroo_Bot ("JobSy") |
-| Bot web service | Vercel project `jobbot`, https://jobbot-eight.vercel.app (`/api/health`) |
-| Hourly timer | cron-job.org → "JobBot tick" (every 15 min, header `X-Cron-Secret`) |
-| Database | MongoDB Atlas, project `jobbot`, DB `jobbot`, user `jobbot` |
+| Code & scheduled scans | `<REPO_URL>` (Actions tab → **Scan**) |
+| Telegram bot | `<BOT_USERNAME>` |
+| Bot web service | Vercel project `<VERCEL_PROJECT>`, `<VERCEL_URL>` (`/api/health`) |
+| Hourly timer | cron-job.org → `<CRON_JOB_NAME>` (every 15 min, header `X-Cron-Secret`) |
+| Database | MongoDB Atlas, project `<ATLAS_PROJECT>`, DB `<MONGODB_DB>`, user `<DB_USER>` |
 | Local secrets | `.env` (git-ignored; never commit) |
 
 ## Daily health check (30 seconds)
@@ -55,9 +57,9 @@ GitHub emails you if a scan run fails outright.
 The bot sends ✅ automatically once the source recovers.
 
 ### The bot doesn't answer commands
-1. Open https://jobbot-eight.vercel.app/api/health. It should return `{"ok":true}`.
+1. Open `<VERCEL_URL>/api/health`. It should return `{"ok":true}`.
 2. Run `uv run jobbot webhook-info` locally.
-   - **`last_error_message` mentions 401:** `TELEGRAM_WEBHOOK_SECRET` differs between `.env` and Vercel. Fix Vercel, redeploy, then run `uv run jobbot set-webhook https://jobbot-eight.vercel.app`.
+   - **`last_error_message` mentions 401:** `TELEGRAM_WEBHOOK_SECRET` differs between `.env` and Vercel. Fix Vercel, redeploy, then run `uv run jobbot set-webhook <VERCEL_URL>`.
    - **URL is empty or wrong:** run `set-webhook` again.
 3. Check Vercel → Deployments (latest is Ready?) and Logs.
 
@@ -66,8 +68,8 @@ The bot sends ✅ automatically once the source recovers.
 
 ### `/scan_now` says GitHub refused (HTTP 403)
 The fine-grained token lacks permission or has expired.
-1. Go to GitHub → Settings → Developer settings → Fine-grained tokens → `jobbot-dispatch`.
-2. Check: repository access is **only Jobbot**, and **Actions** permission is **Read and write**.
+1. Go to GitHub → Settings → Developer settings → Fine-grained tokens → `<TOKEN_NAME>`.
+2. Check: repository access is **only this repository**, and **Actions** permission is **Read and write**.
 3. If the token expired, use **Regenerate token**, then update `GH_DISPATCH_TOKEN` in `.env` and Vercel (and redeploy).
 
 ### Storage warning (70% / 85% / 95%)
@@ -109,9 +111,9 @@ Rotate when a value may have leaked (it was pasted in chat or shown in a screens
 
 | Secret | Expires | Where it's used (update all of them) | How to rotate |
 |---|---|---|---|
-| `TELEGRAM_BOT_TOKEN` | never | `.env`, GitHub secret, Vercel env | BotFather → `/revoke`. Then run `uv run jobbot set-webhook https://jobbot-eight.vercel.app`. |
-| `MONGODB_URI` (password) | never | `.env`, GitHub secret, Vercel env | Atlas → Database Access → `jobbot` → Edit Password → Autogenerate |
-| `GH_DISPATCH_TOKEN` | **3 Nov 2026** | `.env`, Vercel env | GitHub → fine-grained tokens → `jobbot-dispatch` → Regenerate |
+| `TELEGRAM_BOT_TOKEN` | never | `.env`, GitHub secret, Vercel env | BotFather → `/revoke`. Then run `uv run jobbot set-webhook <VERCEL_URL>`. |
+| `MONGODB_URI` (password) | never | `.env`, GitHub secret, Vercel env | Atlas → Database Access → `<DB_USER>` → Edit Password → Autogenerate |
+| `GH_DISPATCH_TOKEN` | **yes, at most 1 year** (`<TOKEN_EXPIRY>`) | `.env`, Vercel env | GitHub → fine-grained tokens → `<TOKEN_NAME>` → Regenerate |
 | `CRON_SECRET` | never (internal) | `.env`, Vercel env, cron-job.org header | `python -c "import secrets; print(secrets.token_urlsafe(32))"` |
 | `TELEGRAM_WEBHOOK_SECRET` | never (internal) | `.env`, Vercel env | Generate as above, redeploy Vercel, then run `set-webhook` |
 | `GROQ_API_KEY` | never | `.env`, GitHub secret | console.groq.com → API Keys |
@@ -120,9 +122,7 @@ Rotate when a value may have leaked (it was pasted in chat or shown in a screens
 
 After changing any Vercel variable, **redeploy**: Deployments → ⋯ → Redeploy.
 
-**Currently recommended:**
-- The `CRON_SECRET` appeared in a screenshot during setup. Rotate it at your convenience; it can only trigger scans.
-- The Atlas password was pasted during setup before it was rotated, and has since been rotated.
+Instance-specific rotation notes (what to rotate now, upcoming expiries) are in `docs/private/MY_SETUP.md`.
 
 ## Free-tier limits (and the bot's use of them)
 
@@ -163,11 +163,7 @@ After changing any Vercel variable, **redeploy**: Deployments → ⋯ → Redepl
 - The bot fetches only fixed source URLs, never user-supplied ones, so there is no SSRF.
 - Telegram output is HTML-escaped.
 
-**Known and accepted:**
-- **Your Telegram chat id is in the history of one test commit.** It was removed in `dde6f3a`. It can't be used without the bot token.
-- **Your Adzuna app id was in a recorded fixture**, via Adzuna's `utm_source` link parameter. It was scrubbed in Phase 11 but remains in history. It is useless without the app key, which was never committed.
+**Residual risk (by design):**
 - **Prompt injection is possible.** A posting's text is sent to the LLM, so it could try to steer the AI's answer. The impact is limited: the output must fit a strict schema, can only fill gaps or relabel vague titles, and can't override stated facts.
 
-**Recommended:**
-- Rotate `CRON_SECRET`; it was visible in a setup screenshot.
-- Set a calendar reminder for the `GH_DISPATCH_TOKEN` expiry on **3 Nov 2026**.
+Instance-specific findings (what remains in git history, rotation advice) are in `docs/private/MY_SETUP.md`.
