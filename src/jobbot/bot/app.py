@@ -99,20 +99,3 @@ async def hourly_tick(request: Request, key: str | None = None) -> JSONResponse:
 
         result = await tick(get_repo(settings), notifier, dispatch, utcnow())
     return JSONResponse({"ok": True, **result})
-
-
-@app.api_route("/{path:path}", methods=["GET", "POST"])
-async def _not_found(path: str, request: Request) -> JSONResponse:
-    # Temporary routing diagnostic (no secrets): which path/headers reach the app on Vercel.
-    routing = {
-        k: v
-        for k, v in request.headers.items()
-        if k.startswith(
-            ("x-vercel-matched", "x-matched", "x-invoke", "x-forwarded-uri", "x-now-route")
-        )
-    }
-    return JSONResponse(
-        {"detail": "Not Found", "path": request.url.path, "scope_path": request.scope.get("path"),
-         "root_path": request.scope.get("root_path"), "routing": routing},
-        status_code=404,
-    )  # fmt: skip
