@@ -14,6 +14,8 @@ from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 
 from jobbot.http import HttpClient
+from jobbot.llm.chain import LLMChain
+from jobbot.llm.enrich import apply_cached, candidates, enrich
 from jobbot.matching.preferences import Preferences, Profile
 from jobbot.matching.scorer import match_job
 from jobbot.models import (
@@ -70,6 +72,10 @@ class ScanReport:
     held_paused: int = 0
     baseline: int = 0
     digested: int = 0
+    llm_calls: int = 0
+    llm_applied: int = 0
+    llm_failed: int = 0
+    llm_flipped: int = 0  # decisions changed by the AI check (match <-> reject)
     compacted: int = 0
     deleted: int = 0
     storage_pct: float = 0.0
@@ -101,10 +107,14 @@ async def run_scan(
     trigger: str = "manual",
     force: bool = False,
     sleep: Sleep = asyncio.sleep,
+    llm: LLMChain | None = None,
+    llm_run_budget: int = 15,
+    llm_daily_budget: int = 100,
 ) -> ScanReport:
     """`notifier=None` stores and scores but sends nothing (alerts stay pending).
 
-    `force` scans every target now, ignoring per-source intervals.
+    `force` scans every target now, ignoring per-source intervals. `llm` (optional) is
+    used to double-check would-be alerts and near-misses before delivery.
     """
     now = utcnow()
     report = ScanReport(started_at=now)
@@ -116,13 +126,19 @@ async def run_scan(
     stored: list[Job] = []
     changed_ids: set[str] = set()
     baseline_ids: set[str] = set()
-    for outcome in outcomes:
+    kept: dict[int, list[Job]] = {}
+    for index, outcome in enumerate(outcomes):
+        if outcome.ok:
+            kept[index] = [job for job in outcome.jobs if worth_storing(job)]
+    # One cache lookup for the whole run: re-apply AI insights to postings checked before.
+    enriched = {j.id: j for j in apply_cached(repo, [j for jobs in kept.values() for j in jobs])}
+    for index, outcome in enumerate(outcomes):
         if not outcome.ok:
             report.sources_failed.append(f"{_key(outcome.target)}: {outcome.error}")
             continue
         report.sources_ok += 1
         report.fetched += len(outcome.jobs)
-        keep = [job for job in outcome.jobs if worth_storing(job)]
+        keep = [enriched.get(job.id, job) for job in kept[index]]
         report.skipped_foreign += len(outcome.jobs) - len(keep)
         first_scan = not getattr(states.get(_key(outcome.target)), "bootstrapped", False)
         for job, result in zip(keep, repo.upsert_jobs(keep), strict=True):
@@ -140,7 +156,12 @@ async def run_scan(
         )
         stored.extend(keep)
 
-    fresh = _score(repo, stored, changed_ids, prefs, prefs_version, profile, report)
+    fresh, current = _score(repo, stored, changed_ids, prefs, prefs_version, profile, report)
+    if llm is not None:
+        await _llm_check(
+            repo, llm, stored, current, fresh, prefs, prefs_version, profile, report,
+            run_budget=llm_run_budget, daily_budget=llm_daily_budget, now=now,
+        )  # fmt: skip
     by_id = {job.id: job for job in stored}
     for job_id in baseline_ids:
         if fresh.get(job_id) is not None and fresh[job_id].decision == "match":
@@ -256,7 +277,7 @@ def _score(
     prefs_version: int,
     profile: Profile,
     report: ScanReport,
-) -> dict[str, MatchResult]:
+) -> tuple[dict[str, MatchResult], dict[str, MatchResult]]:
     existing = repo.get_matches(job.id for job in jobs)
     fresh: list[MatchResult] = []
     for job in jobs:
@@ -266,7 +287,53 @@ def _score(
     repo.save_matches(fresh)
     report.scored = len(fresh)
     report.new_matches = sum(1 for m in fresh if m.decision == "match")
-    return {m.job_id: m for m in fresh}
+    fresh_by_id = {m.job_id: m for m in fresh}
+    return fresh_by_id, {**existing, **fresh_by_id}
+
+
+async def _llm_check(
+    repo: Repository,
+    llm: LLMChain,
+    stored: list[Job],
+    current: dict[str, MatchResult],
+    fresh: dict[str, MatchResult],
+    prefs: Preferences,
+    prefs_version: int,
+    profile: Profile,
+    report: ScanReport,
+    *,
+    run_budget: int,
+    daily_budget: int,
+    now: datetime,
+) -> None:
+    """Let the LLM double-check would-be alerts and near-misses, then re-score them."""
+    pool = [job for job in stored if job.id in current]
+    alerted = set(repo.get_alerts(job.id for job in pool))
+    picked = candidates(pool, current, alerted, prefs.min_score)
+    if not picked:
+        return
+    try:
+        updated, result = await enrich(
+            repo, llm, picked, run_budget=run_budget, daily_budget=daily_budget, now=now
+        )
+    except Exception:  # the LLM layer must never break a scan
+        log.exception("llm enrichment crashed")
+        return
+    report.llm_calls, report.llm_applied, report.llm_failed = (
+        result.calls,
+        result.applied,
+        result.failed,
+    )
+    rescored = []
+    for job in updated:
+        repo.save_derived(job.id, job.normalized, job.fingerprint)
+        match = match_job(job, prefs, profile, prefs_version)
+        before = current.get(job.id)
+        if before is not None and before.decision != match.decision:
+            report.llm_flipped += 1
+        rescored.append(match)
+        fresh[job.id] = current[job.id] = match
+    repo.save_matches(rescored)
 
 
 async def deliver_pending(

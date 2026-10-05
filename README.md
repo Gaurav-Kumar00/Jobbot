@@ -2,7 +2,7 @@
 
 A personal job-discovery bot. It looks for newly posted backend/SWE jobs, scores them against my resume and preferences, removes duplicates, and sends each relevant job to Telegram once. It runs on free infrastructure: GitHub Actions for scanning, MongoDB Atlas M0 for storage, and Vercel for bot commands.
 
-> Status: **Phase 8 — Telegram commands live** (181 sources, hourly scans, Vercel bot, watchdog).
+> Status: **Phase 10 — optional AI check** (181 sources, hourly scans, Vercel bot, watchdog, Groq-assisted matching).
 
 ## Quick start
 
@@ -100,6 +100,21 @@ Jobs scoring at least `min_score` match. Weights and thresholds are preferences,
 - **Reserved before sending.** Each alert is recorded in the database before it goes out. If the bot crashes mid-send, or the network times out after Telegram may have received the message, it is never resent.
 - **Retries.** Failures where Telegram definitely didn't get the message are retried on the next scan.
 - **Pausing.** While alerts are paused, matches are held and delivered on resume.
+
+## Optional AI check
+
+With `GROQ_API_KEY` (or `GROQ_TOKEN`) set, each scan sends would-be alerts and near-misses to a free LLM: Groq `gpt-oss-20b`, then `gpt-oss-120b`, then Gemini if `GEMINI_API_KEY` is set.
+
+**What it does:**
+- It only **fills gaps**: unstated experience, whether the role is backend or something else (only for vague titles like "Software Engineer" or "Full Stack"), India-eligibility for remote roles, and base vs CTC.
+- It writes the alert's 2-line summary.
+- Numbers stated in the posting always win over the AI's reading.
+
+**Limits and failure handling:**
+- Each posting is checked once; the answer is cached by content for 90 days.
+- Budget is `LLM_RUN_BUDGET` (15) calls per scan and `LLM_DAILY_BUDGET` (100) per day.
+- If the AI is down or out of quota, scans behave exactly as without it.
+- `jobbot scan --no-llm` skips it.
 
 ## Vocabulary
 

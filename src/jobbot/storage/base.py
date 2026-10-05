@@ -7,6 +7,7 @@ from datetime import datetime
 from typing import Any, Protocol
 
 from jobbot.models import (
+    AIInsight,
     AlertRecord,
     AlertStatus,
     AlertTrigger,
@@ -77,6 +78,10 @@ class Repository(Protocol):
 
     def get_meta(self, key: str) -> dict[str, Any] | None: ...
     def set_meta(self, key: str, value: dict[str, Any]) -> None: ...
+
+    # --- LLM insight cache (keyed by task + content hash) ---
+    def get_insights(self, keys: Iterable[str]) -> dict[str, AIInsight]: ...
+    def save_insight(self, key: str, insight: AIInsight) -> None: ...
 
     # --- matches ---
     def save_match(self, match: MatchResult) -> None: ...

@@ -10,8 +10,8 @@ from jobbot.normalize.vocab import PhraseMatcher
     ("text", "expected"),
     [
         ("Python, Django and Django REST Framework", ["python", "django", "drf"]),
-        ("FastAPI or Flask microservices", ["fastapi", "flask", "microservices"]),
-        ("Kafka, Celery, RabbitMQ", ["kafka", "celery", "rabbitmq"]),
+        ("FastAPI or Flask microservices", ["fastapi", "flask", "microservices", "python"]),
+        ("Kafka, Celery, RabbitMQ", ["kafka", "celery", "rabbitmq", "python"]),  # implied
         ("Apache NiFi pipelines", ["nifi"]),
         ("PostgreSQL / MySQL / MongoDB / Redis", ["postgresql", "mysql", "mongodb", "redis"]),
         ("Postgres and Mongo", ["postgresql", "mongodb"]),
@@ -66,3 +66,16 @@ def test_phrase_matcher_prefers_longest_alias():
 
 def test_phrase_matcher_empty():
     assert PhraseMatcher({}).find("anything") == []
+
+
+@pytest.mark.parametrize(
+    "framework", ["Django", "Django REST Framework", "FastAPI", "Flask", "Celery"]
+)
+def test_python_frameworks_imply_python(framework):
+    skills, _ = extract_skills("Backend Developer", f"Strong {framework} experience")
+    assert "python" in skills
+
+
+def test_python_not_duplicated_when_stated():
+    skills, _ = extract_skills("", "Python and Django")
+    assert skills.count("python") == 1

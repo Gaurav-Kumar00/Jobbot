@@ -14,7 +14,7 @@ from jobbot.normalize.role import classify_employment, classify_role, classify_s
 from jobbot.normalize.salary import extract_salary
 from jobbot.normalize.skills import extract_skills
 
-NORMALIZER_VERSION = 4
+NORMALIZER_VERSION = 5
 
 
 def normalize(job: Job) -> Normalized:

@@ -108,7 +108,9 @@ async def test_status(ctx, repo):
         SourceState(key="lever:broken", consecutive_failures=4, last_error="HTTP 500")
     )
     add_alerted_job(repo, "1")
+    repo.set_meta("llm_usage", {"date": NOW.date().isoformat(), "calls": 7})
     reply = await text("/status", ctx)
+    assert "AI checks today: 7" in reply
     assert "Last scan: 23 min ago (schedule) · 183/183 sources OK" in reply
     assert "1 failing (/sources)" in reply
     assert "Alerts today: 1" in reply

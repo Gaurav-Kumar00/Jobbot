@@ -11,6 +11,7 @@ from pymongo.database import Database
 from pymongo.errors import BulkWriteError, DuplicateKeyError
 
 from jobbot.models import (
+    AIInsight,
     AlertRecord,
     AlertStatus,
     AlertTrigger,
@@ -28,6 +29,7 @@ from jobbot.timeutil import utcnow
 
 PREFERENCES_ID = "owner"
 RUNS_TTL_SECONDS = 30 * 24 * 3600
+LLM_CACHE_TTL = 90 * 24 * 3600
 
 
 def connect(uri: str, *, timeout_ms: int = 10_000) -> MongoClient:
@@ -47,6 +49,7 @@ class MongoRepository:
         self.preferences = db[f"{prefix}preferences"]
         self.preference_history = db[f"{prefix}preference_history"]
         self.meta = db[f"{prefix}meta"]
+        self.llm_cache = db[f"{prefix}llm_cache"]
 
     def collections(self) -> list[Any]:
         return [
@@ -58,6 +61,7 @@ class MongoRepository:
             self.preferences,
             self.preference_history,
             self.meta,
+            self.llm_cache,
         ]
 
     # --- lifecycle ---
@@ -74,6 +78,7 @@ class MongoRepository:
         self.alerts.create_index([("fingerprint", ASCENDING)])
         self.runs.create_index([("started_at", ASCENDING)], expireAfterSeconds=RUNS_TTL_SECONDS)
         self.preference_history.create_index([("updated_at", DESCENDING)])
+        self.llm_cache.create_index([("created_at", ASCENDING)], expireAfterSeconds=LLM_CACHE_TTL)
 
     def ping(self) -> None:
         self._db.client.admin.command("ping")
@@ -204,6 +209,23 @@ class MongoRepository:
 
     def set_meta(self, key: str, value: dict[str, Any]) -> None:
         self.meta.replace_one({"_id": key}, {"_id": key, "value": value}, upsert=True)
+
+    # --- LLM insight cache ---
+    def get_insights(self, keys: Iterable[str]) -> dict[str, AIInsight]:
+        ids = list(keys)
+        if not ids:
+            return {}
+        return {
+            d["_id"]: AIInsight.model_validate(d["insight"])
+            for d in self.llm_cache.find({"_id": {"$in": ids}})
+        }
+
+    def save_insight(self, key: str, insight: AIInsight) -> None:
+        self.llm_cache.replace_one(
+            {"_id": key},
+            {"_id": key, "insight": insight.model_dump(), "created_at": utcnow()},
+            upsert=True,
+        )
 
     # --- matches ---
     def save_match(self, match: MatchResult) -> None:

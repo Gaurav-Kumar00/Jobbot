@@ -415,3 +415,17 @@ def test_meta(repo):
     repo.set_meta("storage_warning", {"last_pct": 72})
     repo.set_meta("storage_warning", {"last_pct": 75})
     assert repo.get_meta("storage_warning") == {"last_pct": 75}
+
+
+def test_insight_cache_roundtrip(repo):
+    from jobbot.models import AIInsight
+
+    assert repo.get_insights(["k1"]) == {}
+    insight = AIInsight(
+        model="m", min_years=0, max_years=1, role_type="backend", summary="Builds APIs."
+    )
+    repo.save_insight("k1", insight)
+    repo.save_insight("k1", insight.model_copy(update={"summary": "Updated."}))
+    got = repo.get_insights(["k1", "missing"])
+    assert list(got) == ["k1"] and got["k1"].summary == "Updated."
+    assert got["k1"].role_type == "backend"

@@ -5,7 +5,7 @@ Secrets are typed as SecretStr so they never appear in reprs, logs or tracebacks
 
 from __future__ import annotations
 
-from pydantic import SecretStr
+from pydantic import AliasChoices, Field, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -26,6 +26,15 @@ class Settings(BaseSettings):
     adzuna_app_id: str | None = None
     adzuna_app_key: SecretStr | None = None
     serpapi_key: SecretStr | None = None
+
+    # Optional LLM layer (Phase 10). GROQ_TOKEN is accepted as an alias.
+    groq_api_key: SecretStr | None = Field(
+        default=None, validation_alias=AliasChoices("GROQ_API_KEY", "GROQ_TOKEN")
+    )
+    gemini_api_key: SecretStr | None = None
+    gemini_model: str = "gemini-2.5-flash-lite"
+    llm_run_budget: int = 15  # LLM calls per scan
+    llm_daily_budget: int = 100  # LLM calls per UTC day (Groq free: ~1000 req, 200K tokens)
 
     # Bot webhook / hourly tick (Phase 8)
     telegram_webhook_secret: SecretStr | None = None  # Telegram echoes it in a header

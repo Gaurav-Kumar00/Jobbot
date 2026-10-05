@@ -53,6 +53,53 @@ class SalaryInfo(BaseModel):
     evidence: str = ""
 
 
+ROLE_TYPES = (
+    "backend", "fullstack_backend_heavy", "fullstack", "frontend", "mobile", "qa", "devops",
+    "data_engineering", "data_science", "ml", "support", "other",
+)  # fmt: skip
+
+
+class AIInsight(BaseModel):
+    """Facts an LLM read from the posting. Only used to fill gaps the rules couldn't."""
+
+    model: str
+    min_years: float | None = None
+    max_years: float | None = None
+    fresher_friendly: bool = False
+    role_type: str = "other"
+    python_used: bool = False
+    remote_india: Literal["yes", "no", "unknown", "not_remote"] = "unknown"
+    salary_kind: Literal["base", "ctc", "unspecified", "none"] = "none"
+    salary_min_lpa: float | None = None
+    salary_max_lpa: float | None = None
+    summary: str = ""
+
+    @field_validator("min_years", "max_years")
+    @classmethod
+    def _plausible_years(cls, value: float | None) -> float | None:
+        return value if value is None or 0 <= value <= 30 else None
+
+    @field_validator("salary_min_lpa", "salary_max_lpa")
+    @classmethod
+    def _plausible_lpa(cls, value: float | None) -> float | None:
+        return value if value is None or 0.5 <= value <= 300 else None
+
+    @field_validator("role_type")
+    @classmethod
+    def _known_role(cls, value: str) -> str:
+        return value if value in ROLE_TYPES else "other"
+
+    @field_validator("summary")
+    @classmethod
+    def _short_summary(cls, value: str) -> str:
+        value = " ".join(value.split())
+        if len(value) <= 260:
+            return value
+        cut = value[:260]
+        end = cut.rfind(". ")  # prefer ending on a full sentence
+        return cut[: end + 1] if end > 80 else cut.rsplit(" ", 1)[0] + "…"
+
+
 class Normalized(BaseModel):
     """Derived fields. Bump NORMALIZER_VERSION when extraction logic changes."""
 
@@ -65,6 +112,7 @@ class Normalized(BaseModel):
     employment_type: str = "full_time"
     skills: list[str] = Field(default_factory=list)
     title_skills: list[str] = Field(default_factory=list)
+    ai: AIInsight | None = None  # set when an LLM filled gaps (see jobbot.llm.enrich)
 
 
 class Job(BaseModel):

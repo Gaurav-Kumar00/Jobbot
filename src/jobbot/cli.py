@@ -15,6 +15,7 @@ from pymongo.errors import PyMongoError
 from jobbot import __version__
 from jobbot.config import find_company, load_companies
 from jobbot.http import FetchError, HttpClient
+from jobbot.llm.chain import build_chain
 from jobbot.log import redact, setup_logging
 from jobbot.matching.explain import explain_text, one_line
 from jobbot.matching.preferences import Preferences, current_preferences, load_profile
@@ -335,6 +336,7 @@ def _configure_scan(parser: argparse.ArgumentParser) -> None:
     parser.add_argument(
         "--force", action="store_true", help="scan every company now, ignoring intervals"
     )
+    parser.add_argument("--no-llm", action="store_true", help="skip the optional AI check")
 
 
 async def cmd_scan(settings: Settings, args: argparse.Namespace) -> int:
@@ -359,6 +361,9 @@ async def cmd_scan(settings: Settings, args: argparse.Namespace) -> int:
             profile=load_profile(),
             trigger=args.trigger,
             force=args.force,
+            llm=None if args.no_llm else build_chain(settings),
+            llm_run_budget=settings.llm_run_budget,
+            llm_daily_budget=settings.llm_daily_budget,
         )
         if args.no_send:
             report = await run_scan(notifier=None, **common)
@@ -386,6 +391,8 @@ def describe_report(report: ScanReport, prefs_version: int) -> str:
         f"  alerts: {report.alerts_sent} sent, {report.alerts_failed} failed (will retry),"
         f" {report.alerts_uncertain} uncertain (not resent), {report.held_paused} held,"
         f" {report.baseline} older than 48h on first scan, {report.digested} sent as digest",
+        f"  AI check: {report.llm_calls} calls, {report.llm_applied} applied,"
+        f" {report.llm_failed} failed, {report.llm_flipped} decisions changed",
         f"  storage: {report.storage_pct:g}% used, {report.compacted} compacted,"
         f" {report.deleted} deleted",
     ]

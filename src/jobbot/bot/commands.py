@@ -100,6 +100,7 @@ async def cmd_status(ctx: BotContext, args: list[str]) -> Reply:
         + (f"⚠️ {len(failing)} failing (/sources)" if failing else "all healthy"),
         f"Alerts today: {sent_today}",
         f"Waiting to send: {waiting}" if waiting else "Waiting to send: none",
+        f"AI checks today: {_ai_calls_today(ctx)}",
         f"Storage: {used:.1f}% of 512 MB",
         f"Preferences v{version} · min score {prefs.min_score}",
     ]
@@ -383,6 +384,11 @@ def _alert_list(ctx: BotContext, alerts, title: str) -> Reply:
         if job is not None and match is not None:
             lines.append(opening_line(job, match).rstrip())
     return say("\n".join(lines)[:4000])
+
+
+def _ai_calls_today(ctx: BotContext) -> int:
+    usage = ctx.repo.get_meta("llm_usage") or {}
+    return usage.get("calls", 0) if usage.get("date") == ctx.now.date().isoformat() else 0
 
 
 def _ist_midnight(now: datetime) -> datetime:

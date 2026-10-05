@@ -486,3 +486,71 @@ async def test_one_unparseable_posting_does_not_break_the_scan(source, repo, not
     assert report.sources_ok == 2 and report.sources_failed == []
     assert report.alerts_sent == 2
     assert repo.get_job("fake:acme:bad") is None
+
+
+# --- Phase 10: optional AI check -----------------------------------------------------------
+
+
+class FakeLLM:
+    """Stands in for LLMChain: answers per job title."""
+
+    def __init__(self, by_title: dict) -> None:
+        self.by_title, self.calls, self.errors, self.available = by_title, [], [], True
+
+    async def extract(self, http, job):
+        self.calls.append(job.title)
+        return self.by_title.get(job.title)
+
+
+async def ai_scan(repo, notifier, llm, slugs=("acme",)):
+    async with HttpClient() as http:
+        return await run_scan(
+            repo=repo, http=http, notifier=notifier, targets=[target(s) for s in slugs],
+            prefs=default_preferences(), prefs_version=1, profile=load_profile(),
+            force=True, sleep=no_sleep, llm=llm, llm_run_budget=10, llm_daily_budget=50,
+        )  # fmt: skip
+
+
+async def test_ai_check_can_veto_a_generic_title_and_adds_summaries(source, repo, notifier):
+    from jobbot.models import AIInsight
+
+    source.boards["acme"] = [
+        posting("1", title="Software Engineer", desc="0-1 years. Build the React UI."),
+        posting("2", title="Backend Engineer"),
+    ]
+    llm = FakeLLM(
+        {
+            "Software Engineer": AIInsight(model="t", role_type="frontend"),
+            "Backend Engineer": AIInsight(
+                model="t", role_type="backend", summary="Owns payment APIs."
+            ),
+        }
+    )
+    report = await ai_scan(repo, notifier, llm)
+    assert sorted(llm.calls) == ["Backend Engineer", "Software Engineer"]
+    assert report.llm_calls == 2 and report.llm_flipped == 1
+    assert report.alerts_sent == 1
+    (alert,) = notifier.sent
+    assert "Backend Engineer" in alert.text and "Owns payment APIs." in alert.text
+    assert "AI summary" in alert.text
+    assert repo.get_match("fake:acme:1").reject_reason == "frontend role"
+
+    again = await ai_scan(repo, notifier, llm)  # cached: no new calls, verdicts kept
+    assert again.llm_calls == 0 and len(llm.calls) == 2
+    assert repo.get_job("fake:acme:2").normalized.ai.summary == "Owns payment APIs."
+
+
+async def test_scan_works_when_the_ai_answers_nothing(source, repo, notifier):
+    source.boards["acme"] = [posting("1")]
+    report = await ai_scan(repo, notifier, FakeLLM({}))
+    assert report.llm_failed == 1 and report.alerts_sent == 1
+
+
+async def test_crashing_ai_layer_never_breaks_the_scan(source, repo, notifier):
+    class Broken(FakeLLM):
+        async def extract(self, http, job):
+            raise RuntimeError("bug in provider")
+
+    source.boards["acme"] = [posting("1")]
+    report = await ai_scan(repo, notifier, Broken({}))
+    assert report.alerts_sent == 1

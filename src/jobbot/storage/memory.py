@@ -7,6 +7,7 @@ from datetime import datetime
 from typing import Any
 
 from jobbot.models import (
+    AIInsight,
     AlertRecord,
     AlertStatus,
     AlertTrigger,
@@ -46,6 +47,7 @@ class MemoryRepository:
         self.preferences: PreferencesDoc | None = None
         self.preference_history: list[PreferencesDoc] = []
         self.meta: dict[str, dict[str, Any]] = {}
+        self.insights: dict[str, AIInsight] = {}
 
     # --- lifecycle ---
     def ensure_indexes(self) -> None:
@@ -169,6 +171,13 @@ class MemoryRepository:
 
     def set_meta(self, key: str, value: dict[str, Any]) -> None:
         self.meta[key] = dict(value)
+
+    # --- LLM insight cache ---
+    def get_insights(self, keys: Iterable[str]) -> dict[str, AIInsight]:
+        return {k: self.insights[k].model_copy() for k in keys if k in self.insights}
+
+    def save_insight(self, key: str, insight: AIInsight) -> None:
+        self.insights[key] = insight.model_copy()
 
     # --- matches ---
     def save_match(self, match: MatchResult) -> None:

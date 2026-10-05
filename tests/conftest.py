@@ -16,6 +16,9 @@ ENV_VARS = (
     "CRON_SECRET",
     "GH_DISPATCH_TOKEN",
     "GITHUB_REPOSITORY",
+    "GROQ_API_KEY",
+    "GROQ_TOKEN",
+    "GEMINI_API_KEY",
 )
 
 FAKE_TOKEN = "123456789:AAFakeTokenForTestsOnly_abcdefghijklmno"

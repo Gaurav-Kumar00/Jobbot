@@ -56,9 +56,11 @@ def format_alert(job: Job, match: MatchResult, *, now: datetime) -> OutgoingMess
     if match.reasons:
         bullets = "\n".join(f"• {esc(reason)}" for reason in match.reasons[:5])
         sections.append(f"✅ <b>Why it matches</b>\n{bullets}")
-    summary = summarize(job.description)
+    ai_summary = n.ai.summary if n.ai else ""
+    summary = ai_summary or summarize(job.description)
     if summary:
-        sections.append(f"📝 <b>About the role</b>\n{esc(summary)}")
+        label = "About the role" + (" <i>(AI summary)</i>" if ai_summary else "")
+        sections.append(f"📝 <b>{label}</b>\n{esc(summary)}")
     source = SOURCE_LABELS.get(job.source, job.source.title())
     sections.append(f"🔗 {esc(source)} · <code>{esc(job.id)}</code>")
 
