@@ -8,7 +8,7 @@
     "__CLASS__": "Adzuna::API::Response::Category",
     "label": "IT Jobs"
    },
-   "redirect_url": "https://www.adzuna.in/details/5911188252?utm_medium=api&utm_source=eca32fc6",
+   "redirect_url": "https://www.adzuna.in/details/5911188252?utm_medium=api&utm_source=testappid",
    "title": "Engineer III, Software",
    "salary_is_predicted": "0",
    "adref": "eyJhbGciOiJIUzI1NiJ9.eyJzIjoiWmtCdjhjZV84UkdUeXZUSDVxUlE3QSIsImkiOiI1OTExMTg4MjUyIn0.QbzYVoPIiJziqe3vTzLa3mc3DvxtIFfJzbwKO3IFhsU",
@@ -41,7 +41,7 @@
     "label": "IT Jobs",
     "tag": "it-jobs"
    },
-   "redirect_url": "https://www.adzuna.in/details/5911188110?utm_medium=api&utm_source=eca32fc6",
+   "redirect_url": "https://www.adzuna.in/details/5911188110?utm_medium=api&utm_source=testappid",
    "title": "Software Architect",
    "latitude": 12.95703,
    "description": "Who we want: Software Architect - Surgical Planning Platform We are seeking an experienced Software Architect to contribute to the architecture and technical strategy of next-generation clinical and surgical software products spanning the pre-operative, intra-operative, and post-operative ecosystem. The Software Architect will collaborate closely with Technical Leads, Principal Engineers, and Chief Architects to shape and evolve the technical vision across a portfolio of desktop applications, c…",
@@ -63,7 +63,7 @@
   },
   {
    "title": "Data Analyst/Developer (VBA, Power Query, Power BI, Python)",
-   "redirect_url": "https://www.adzuna.in/details/5911187891?utm_medium=api&utm_source=eca32fc6",
+   "redirect_url": "https://www.adzuna.in/details/5911187891?utm_medium=api&utm_source=testappid",
    "created": "2026-10-04T11:53:02Z",
    "category": {
     "__CLASS__": "Adzuna::API::Response::Category",
@@ -95,7 +95,7 @@
    "adref": "eyJhbGciOiJIUzI1NiJ9.eyJzIjoiWmtCdjhjZV84UkdUeXZUSDVxUlE3QSIsImkiOiI1OTExMTg3Nzc4In0.UPxHZlBh7s0who8f0-MqQVdXu9FAKw_wrRKKaaSqyKE",
    "salary_is_predicted": "0",
    "longitude": 77.59837,
-   "redirect_url": "https://www.adzuna.in/details/5911187778?utm_medium=api&utm_source=eca32fc6",
+   "redirect_url": "https://www.adzuna.in/details/5911187778?utm_medium=api&utm_source=testappid",
    "title": "Data Engineer II",
    "category": {
     "label": "IT Jobs",
@@ -122,7 +122,7 @@
    }
   },
   {
-   "redirect_url": "https://www.adzuna.in/details/5911187279?utm_medium=api&utm_source=eca32fc6",
+   "redirect_url": "https://www.adzuna.in/details/5911187279?utm_medium=api&utm_source=testappid",
    "title": "Python Fullstack Developer",
    "created": "2026-10-04T11:51:44Z",
    "category": {

@@ -1,4 +1,4 @@
-.PHONY: install test test-mongo lint fmt ping db-init check
+.PHONY: install test test-mongo lint fmt ping db-init check scan rank backlog
 
 install:
 	uv sync
@@ -25,3 +25,12 @@ ping:
 
 db-init:
 	uv run jobbot db-init
+
+scan:
+	uv run jobbot scan
+
+rank:
+	uv run jobbot rank --top 20
+
+backlog:
+	uv run jobbot backlog
